@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { MdOutlineMovieFilter } from 'react-icons/md';
 import Link from '../../shared/Link';
 import {
@@ -7,9 +7,24 @@ import {
 import Backdrop from '../Backdrop';
 import { categories } from '../../data/categories';
 import { SideNavbarContext } from '../../context/sideNavbar.context';
+import { breakpoints } from '../../constants/breakpoints';
 
 const SideNavbar = () => {
   const { show, close } = useContext(SideNavbarContext);
+
+  useEffect(() => {
+    const closeSidebarOnLargeScreen = (e) => {
+      if(window.innerWidth >= breakpoints.sm) {
+        close();
+      }
+    };
+
+    window.addEventListener('resize', closeSidebarOnLargeScreen);
+
+    return () => {
+      window.removeEventListener('resize', closeSidebarOnLargeScreen);
+    };
+  }, []);
 
   return (
     <>
