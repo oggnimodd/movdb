@@ -20,8 +20,8 @@ export const SideNavbarWrapper = styled.aside`
   `}
 
   ${({ show }) => show && tw`translate-x-0`}
-  transition: ${({ show }) => show && 'all 300ms ease-in-out'};
   z-index: 999;
+  transition: all 300ms ease-in-out; 
 
   @media screen and (min-width:${breakpoints
     .sm}px){
