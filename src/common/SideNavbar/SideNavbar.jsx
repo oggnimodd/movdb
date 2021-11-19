@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { MdOutlineMovieFilter } from 'react-icons/md';
 import Link from '../../shared/Link';
 import {
@@ -6,13 +6,16 @@ import {
 } from './SideNavbar.style';
 import Backdrop from '../Backdrop';
 import { categories } from '../../data/categories';
+import { SideNavbarContext } from '../../context/sideNavbar.context';
 
-const Sidebar = ({ show, toggle }) => {
+const SideNavbar = () => {
+  const { show, close } = useContext(SideNavbarContext);
+
   return (
     <>
       <Backdrop
         open={show}
-        handleClose={toggle}
+        handleClose={close}
       />
 
       <SideNavbarWrapper show={show}>
@@ -69,4 +72,4 @@ const Sidebar = ({ show, toggle }) => {
   );
 };
 
-export default Sidebar;
+export default SideNavbar;

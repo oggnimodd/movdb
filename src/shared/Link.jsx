@@ -1,11 +1,14 @@
+import React, { useContext } from 'react';
 import { Link as RRLink, NavLink as RRNavLink } from 'react-router-dom';
-import React from 'react';
+import { SideNavbarContext } from '../context/sideNavbar.context';
 
 export const NavLink = (props) => {
   const { children, closeNavbar, ...rest } = props;
+  const { close } = useContext(SideNavbarContext);
 
   const scrollToTop = () => {
     window.scrollTo(0, 0);
+    close();
   };
 
   return (
