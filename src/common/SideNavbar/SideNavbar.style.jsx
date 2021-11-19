@@ -7,26 +7,26 @@ export const SideNavbarWrapper = styled.aside`
   ${tw`
     bg-secondary
     h-screen
-    w-1/2
+    w-9/12
     flex-shrink-0
     absolute
     sm:relative
     top-0 
     -translate-x-full
-    invisible
     sm:translate-x-0
-    sm:visible
     flex
     flex-col
     select-none
   `}
 
-  ${({ show }) => show && tw`translate-x-0 visible`}
-
+  ${({ show }) => show && tw`translate-x-0`}
+  transition: ${({ show }) => show && 'all 300ms ease-in-out'};
   z-index: 999;
+
   @media screen and (min-width:${breakpoints
     .sm}px){
       width: 230px;
+      transition: none;
   }
 `;
 

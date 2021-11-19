@@ -2,7 +2,7 @@ import { Link as RRLink, NavLink as RRNavLink } from 'react-router-dom';
 import React from 'react';
 
 export const NavLink = (props) => {
-  const { children, ...rest } = props;
+  const { children, closeNavbar, ...rest } = props;
 
   const scrollToTop = () => {
     window.scrollTo(0, 0);
