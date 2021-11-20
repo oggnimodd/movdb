@@ -8,8 +8,8 @@ module.exports = {
         accent: '#2F80ED',
       },
       fontFamily: {
-        syne: ['Syne', 'sans-serif'],
-        montserrat: ['Montserrat', 'sans-serif'],
+        primary: ['Syne', 'sans-serif'],
+        secondary: ['Montserrat', 'sans-serif'],
       },
       textColor: {
         accent: '#2F80ED',

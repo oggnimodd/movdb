@@ -53,7 +53,7 @@ export const Brand = styled.h1`
   ${tw`
     text-3xl 
     text-white
-    font-syne
+    font-primary
     text-center
     font-semibold
     py-5
@@ -76,7 +76,7 @@ export const SubSection = styled.div`
 export const SubSectionHeader = styled.h2`
   ${tw`
     font-bold
-    font-syne
+    font-primary
     mb-3 
     text-accent
   `}
@@ -88,7 +88,7 @@ export const NavLink = styled(Link)`
     py-1 
     my-1
     text-sm
-    font-montserrat
+    font-secondary
     font-medium
     outline-none
     flex
