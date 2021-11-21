@@ -2,12 +2,14 @@ import React, { useContext, useEffect } from 'react';
 import { MdOutlineMovieFilter } from 'react-icons/md';
 import Link from '../../shared/Link';
 import {
-  SideNavbarWrapper, Brand, Inner, SubSection, SubSectionHeader, NavLink,
+  SideNavbarWrapper, Inner, SubSection, SubSectionHeader, NavLink,
 } from './SideNavbar.style';
 import Backdrop from '../Backdrop';
 import { categories } from '../../data/categories';
 import { SideNavbarContext } from '../../context/sideNavbar.context';
 import { breakpoints } from '../../constants/breakpoints';
+import Brand from '../../shared/Brand/Brand';
+import SearchBar from '../../shared/SearchBar/SearchBar';
 
 const SideNavbar = () => {
   const { show, close } = useContext(SideNavbarContext);
@@ -35,14 +37,16 @@ const SideNavbar = () => {
 
       <SideNavbarWrapper show={show}>
         <Link to="/">
-          <Brand>
-            Mov
-            <span>
-              DB
-            </span>
-          </Brand>
+          <Brand />
         </Link>
         <Inner>
+          <SubSection mobileOnly>
+            <SubSectionHeader>
+              EXPLORE
+            </SubSectionHeader>
+            <SearchBar sideNavbar />
+          </SubSection>
+
           <SubSection>
             <SubSectionHeader>
               DISCOVER

@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
+import { Container } from './shared/Flexi';
 
 const Home = lazy(() => import('./pages/Home'));
 const Cast = lazy(() => import('./pages/Cast'));
@@ -14,20 +15,22 @@ const MoviesInGenre = lazy(() => import('./pages/MoviesInGenre'));
 
 const Routes = () => {
   return (
-    <Suspense fallback={<div>loading</div>}>
-      <Switch>
-        <Redirect exact path="/" to="/discover/popular" />
-        <Redirect exact path="/discover" to="/discover/popular" />
-        <Route exact path="/discover/popular" component={Home} />
-        <Route exact path="/genre/genreID" component={MoviesInGenre} />
-        <Route exact path="/movie/:movieID" component={Movie} />
-        <Route exact path="/cast/castID" component={Cast} />
-        <Route exact path="/favorites" component={Favorites} />
-        <Route exact path="/watch-later" component={WatchLater} />
-        {/* 404 PAGE */}
-        <Route path="*" component={NotFound} />
-      </Switch>
-    </Suspense>
+    <Container>
+      <Suspense fallback={<div>loading</div>}>
+        <Switch>
+          <Redirect exact path="/" to="/discover/popular" />
+          <Redirect exact path="/discover" to="/discover/popular" />
+          <Route exact path="/discover/popular" component={Home} />
+          <Route exact path="/genre/genreID" component={MoviesInGenre} />
+          <Route exact path="/movie/:movieID" component={Movie} />
+          <Route exact path="/cast/castID" component={Cast} />
+          <Route exact path="/favorites" component={Favorites} />
+          <Route exact path="/watch-later" component={WatchLater} />
+          {/* 404 PAGE */}
+          <Route path="*" component={NotFound} />
+        </Switch>
+      </Suspense>
+    </Container>
   );
 };
 

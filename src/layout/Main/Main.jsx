@@ -5,9 +5,7 @@ import { Container } from '../../shared/Flexi';
 const Main = ({ children }) => {
   return (
     <MainWrapper>
-      <Container>
-        {children}
-      </Container>
+      {children}
     </MainWrapper>
   );
 };

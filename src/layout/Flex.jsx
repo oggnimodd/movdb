@@ -5,6 +5,5 @@ export const Flex = styled.div`
     flex 
     relative
     w-full 
-    h-screen
   `}
 `;

@@ -6,7 +6,6 @@ const Container = ({
 }) => {
   return (
     <ContainerStyle
-      padding={padding}
       {...restProps}
     >
       {children}

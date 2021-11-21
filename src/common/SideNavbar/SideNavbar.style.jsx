@@ -9,8 +9,8 @@ export const SideNavbarWrapper = styled.aside`
     h-screen
     w-9/12
     flex-shrink-0
-    absolute
-    sm:relative
+    fixed
+    sm:sticky
     top-0 
     -translate-x-full
     sm:translate-x-0
@@ -22,6 +22,7 @@ export const SideNavbarWrapper = styled.aside`
   ${({ show }) => show && tw`translate-x-0`}
   z-index: 999;
   transition: all 300ms ease-in-out; 
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 
   @media screen and (min-width:${breakpoints
     .sm}px){
@@ -71,6 +72,8 @@ export const SubSection = styled.div`
     mb-10
     text-white
   `}
+
+  ${({ mobileOnly }) => mobileOnly && tw`sm:hidden block`}
 `;
 
 export const SubSectionHeader = styled.h2`
@@ -97,7 +100,6 @@ export const NavLink = styled(Link)`
     rounded-3xl
     border-transparent
   `}
-  transition: all ease-in-out 200ms;
 
   &.link-active, &:hover{
     ${tw`
