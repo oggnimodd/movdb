@@ -1,0 +1,5 @@
+.custom-scrollbar-vertical{
+  border-radius: 3px;
+  background: linear-gradient(to bottom, #0472b3, #09305e, #c5c8e0);
+  width: 0.4rem;
+}

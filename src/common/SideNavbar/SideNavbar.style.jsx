@@ -36,17 +36,15 @@ export const Inner = styled.div`
     w-full
     h-full
     overflow-y-scroll
-    px-5
-    py-2
+    pt-2
   `}
 
-  &::-webkit-scrollbar{
-    width: 0.4rem;
-  }
+  /* Hide default scrollbar and use plugin */
+  scrollbar-width: none; /* Firefox 64 */
+  -ms-overflow-style: none; /* IE 11 */
 
-  &::-webkit-scrollbar-thumb {
-    border-radius: 3px;
-    background: linear-gradient(to bottom, #0472b3, #09305e, #c5c8e0);
+  &::-webkit-scrollbar{
+    display: none; // chrome
   }
 `;
 
@@ -71,6 +69,7 @@ export const SubSection = styled.div`
   ${tw`
     mb-10
     text-white
+    mx-5
   `}
 
   ${({ mobileOnly }) => mobileOnly && tw`sm:hidden block`}

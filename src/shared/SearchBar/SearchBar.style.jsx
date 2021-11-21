@@ -6,20 +6,14 @@ export const SearchBarStyled = styled.form`
   form {
     ${tw`
       relative 
-      rounded-3xl
-      border
-      border-white 
-      py-2
-      px-3 
     `}
-
-    ${({ sideNavbar }) => (sideNavbar ? tw`w-full` : 'w-80')}
   }
 
   button {
     ${tw`
-      ml-1
+      ml-3
       absolute
+      left-0
       top-1/2 
       -translate-y-1/2  
       text-xl
@@ -28,11 +22,27 @@ export const SearchBarStyled = styled.form`
 
   input{
     ${tw`
-      w-full
       bg-transparent 
       outline-none
       pl-9 
       font-primary
+      border
+      border-white 
+      py-2
+      pl-9 
+      pr-4
+      rounded-3xl
+      inline-block
     `}
+
+    &:focus {
+      ${tw`border-accent`}
+    }
+
+    &:focus + button{
+      ${tw`text-accent`}
+    }
+
+    ${({ sideNavbar }) => (sideNavbar ? tw`w-full` : tw`w-72`)};
   }
 `;

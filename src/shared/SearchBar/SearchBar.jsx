@@ -6,11 +6,11 @@ const SearchBar = ({ handleSubmit, sideNavbar }) => {
   return (
     <SearchBarStyled sideNavbar={sideNavbar}>
       <form onSubmit={handleSubmit}>
-        <button> <BiSearch /></button>
         <input
           placeholder="Search for a movie"
           type="search"
         />
+        <button> <BiSearch /></button>
       </form>
     </SearchBarStyled>
   );
