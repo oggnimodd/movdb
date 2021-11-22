@@ -1,7 +1,30 @@
 import React from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
+import queryString from 'query-string';
 import MovieList from '../layout/MovieList/MovieList';
-import { movies } from '../data/movies';
 import useMovies from '../hooks/useMovies';
+import Fallback from '../shared/Fallback';
+
+export const Button = ({ children }) => {
+  const history = useHistory();
+  const { pathname: location, search } = useLocation();
+  const nextPage = () => {
+    const parsed = queryString.parse(search);
+    const { page } = parsed;
+    const nextPage = (parseInt(page, 10) || 1) + 1;
+    const newParams = new URLSearchParams();
+
+    newParams.append('page', nextPage);
+
+    history.push({ search: newParams.toString() });
+  };
+
+  return (
+    <button onClick={nextPage}>
+      {children}
+    </button>
+  );
+};
 
 const Home = () => {
   // get movie list here and pass to children
@@ -9,18 +32,22 @@ const Home = () => {
   const { movies, loading, error } = useMovies('discover');
 
   if(loading) {
-    return <p>loading</p>;
+    return <Fallback />;
   }
 
   if(error) {
     return <p>error</p>;
   }
+  if(!movies) return null;
 
-  const { results } = movies;
+  const { results } = movies || {};
 
   return (
     <>
       {/* List header (description), ex => Popular Movies -------- page 1 of 500 */}
+      <Button>
+        next
+      </Button>
 
       {/* filter */}
 

@@ -25,7 +25,7 @@ const Routes = () => {
           <Redirect exact path="/discover" to="/discover/popular" />
           <Route exact path={['/discover/:discoverID(popular|top-rated|upcoming)']} component={Home} />
 
-          <Route exact path="/genre/genreID" component={MoviesInGenre} />
+          <Route exact path="/genre/:genreID" component={MoviesInGenre} />
           <Route exact path="/movie/:movieID" component={Movie} />
           <Route exact path="/cast/castID" component={Cast} />
           <Route exact path="/favorites" component={Favorites} />

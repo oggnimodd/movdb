@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams, useHistory } from 'react-router-dom';
 import queryString from 'query-string';
 import { baseURL, apiKey } from '../config/movieAPI';
+import { genres } from '../data/genres';
 
 const createURL = (type, page, params) => {
   const query = {
@@ -10,26 +11,39 @@ const createURL = (type, page, params) => {
     api_key: apiKey,
   };
 
+  let url;
+  query.page = page || 1;
+
   if(type === 'discover') {
     let { discoverID } = params;
     discoverID = discoverID === 'top-rated' ? 'top_rated' : discoverID;
 
-    query.page = page || 1;
-    const url = `${baseURL}movie/${discoverID}?${queryString.stringify(query)}`;
-    console.log(url);
-    return url;
+    url = `${baseURL}movie/${discoverID}?${queryString.stringify(query)}`;
   }
+
+  if(type === 'genre') {
+    const { genreID } = params;
+    const genre = genres.filter((i) => i.name.toLowerCase() === genreID)[0].id;
+    query.with_genres = genre;
+    url = `${baseURL}discover/movie?${queryString.stringify(query)}`;
+  }
+
+  console.log(url);
+
+  return url;
 };
 
 const useMovies = (type) => {
+  const history = useHistory();
+
   // need location to get query and page
   const l = useLocation();
   const params = useParams();
   const { pathname: location, search } = l;
 
   const [movies, setMovies] = useState();
-  const [error, setError] = useState(true);
-  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState();
+  const [loading, setLoading] = useState();
 
   const parsed = queryString.parse(search);
   const { page } = parsed;
@@ -49,9 +63,9 @@ const useMovies = (type) => {
         console.log(error);
       }
     };
-
+    setLoading(true);
     getMovies();
-  }, [location]);
+  }, [l]);
 
   return {
     movies, error, loading,

@@ -74,7 +74,7 @@ const SideNavbar = () => {
               categories && categories.map((item) => {
                 return (
                   <NavLink
-                    to={`/genres/${item.name.toLowerCase()}`}
+                    to={`/genre/${item.name.toLowerCase()}`}
                     key={item.id}
                   >
                     <MdOutlineMovieFilter />
