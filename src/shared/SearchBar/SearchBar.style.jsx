@@ -1,6 +1,6 @@
 import tw, { styled } from 'twin.macro';
 
-export const SearchBarStyled = styled.form`
+export const SearchBarStyled = styled.div`
   ${({ sideNavbar }) => !sideNavbar && tw`sm:block hidden`}
 
   form {

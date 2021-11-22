@@ -1,5 +1,8 @@
 import React, { Suspense, lazy } from 'react';
-import { Route, Redirect, Switch } from 'react-router-dom';
+import {
+  Route, Redirect, Switch, useHistory, useLocation,
+} from 'react-router-dom';
+import queryString from 'query-string';
 import { Container } from './shared/Flexi';
 
 const Home = lazy(() => import('./pages/Home'));
@@ -20,7 +23,8 @@ const Routes = () => {
         <Switch>
           <Redirect exact path="/" to="/discover/popular" />
           <Redirect exact path="/discover" to="/discover/popular" />
-          <Route exact path="/discover/popular" component={Home} />
+          <Route exact path={['/discover/:discoverID(popular|top-rated|upcoming)']} component={Home} />
+
           <Route exact path="/genre/genreID" component={MoviesInGenre} />
           <Route exact path="/movie/:movieID" component={Movie} />
           <Route exact path="/cast/castID" component={Cast} />
