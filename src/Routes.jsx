@@ -12,6 +12,7 @@ const Movie = lazy(() => import('./pages/Movie'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const WatchLater = lazy(() => import('./pages/WatchLater'));
 const MoviesInGenre = lazy(() => import('./pages/MoviesInGenre'));
+const SearchResults = lazy(() => import('./pages/SearchResults'));
 
 // readable routes linter
 /* eslint react/jsx-max-props-per-line: 0 */
@@ -28,6 +29,9 @@ const Routes = () => {
           <Route exact path="/genre/:genreID" component={MoviesInGenre} />
           <Route exact path="/movie/:movieID" component={Movie} />
           <Route exact path="/cast/castID" component={Cast} />
+
+          <Route exact path="/search" component={SearchResults} />
+
           <Route exact path="/favorites" component={Favorites} />
           <Route exact path="/watch-later" component={WatchLater} />
           {/* 404 PAGE */}

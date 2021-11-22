@@ -10,9 +10,11 @@ export const Button = ({ children }) => {
   const { pathname: location, search } = useLocation();
   const nextPage = () => {
     const parsed = queryString.parse(search);
-    const { page } = parsed;
+    const { page, ...rest } = parsed;
     const nextPage = (parseInt(page, 10) || 1) + 1;
-    const newParams = new URLSearchParams();
+    const newParams = new URLSearchParams({
+      ...rest,
+    });
 
     newParams.append('page', nextPage);
 
@@ -38,7 +40,6 @@ const Home = () => {
   if(error) {
     return <p>error</p>;
   }
-  if(!movies) return null;
 
   const { results } = movies || {};
 

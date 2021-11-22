@@ -4,7 +4,7 @@ import queryString from 'query-string';
 import { baseURL, apiKey } from '../config/movieAPI';
 import { genres } from '../data/genres';
 
-const createURL = (type, page, params) => {
+const createURL = (type, page, params, search) => {
   const query = {
     page: '',
     sort_by: 'popularity.desc',
@@ -28,7 +28,10 @@ const createURL = (type, page, params) => {
     url = `${baseURL}discover/movie?${queryString.stringify(query)}`;
   }
 
-  console.log(url);
+  if(type === 'search') {
+    query.query = search;
+    url = `${baseURL}search/movie?${queryString.stringify(query)}`;
+  }
 
   return url;
 };
@@ -46,8 +49,8 @@ const useMovies = (type) => {
   const [loading, setLoading] = useState();
 
   const parsed = queryString.parse(search);
-  const { page } = parsed;
-  const url = createURL(type, page, params);
+  const { page, query } = parsed;
+  const url = createURL(type, page, params, query);
 
   useEffect(() => {
     const getMovies = async () => {
