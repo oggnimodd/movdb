@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import queryString from 'query-string';
@@ -18,12 +19,12 @@ const MoviesInGenre = () => {
   }
   if(!movies) return null;
 
-  const { results } = movies || {};
+  const { results, total_pages } = movies || {};
 
   return (
     <>
       {/* List header (description), ex => Popular Movies -------- page 1 of 500 */}
-      <Button>
+      <Button total={total_pages}>
         next
       </Button>
 

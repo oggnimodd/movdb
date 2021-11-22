@@ -9,6 +9,7 @@ const createURL = (type, page, params, search) => {
     page: '',
     sort_by: 'popularity.desc',
     api_key: apiKey,
+    adult: false,
   };
 
   let url;

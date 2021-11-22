@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import MovieList from '../layout/MovieList/MovieList';
 import Fallback from '../shared/Fallback';
@@ -17,12 +18,12 @@ const SearchResults = () => {
     return <p>error</p>;
   }
 
-  const { results } = movies || {};
+  const { results, total_pages } = movies || {};
 
   return (
     <>
       {/* List header (description), ex => Popular Movies -------- page 1 of 500 */}
-      <Button>
+      <Button total={total_pages}>
         next
       </Button>
 

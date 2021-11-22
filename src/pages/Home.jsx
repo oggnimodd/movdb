@@ -1,28 +1,34 @@
-import React from 'react';
+/* eslint-disable camelcase */
+import React, { useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import queryString from 'query-string';
 import MovieList from '../layout/MovieList/MovieList';
 import useMovies from '../hooks/useMovies';
 import Fallback from '../shared/Fallback';
 
-export const Button = ({ children }) => {
+export const Button = ({ children, total }) => {
   const history = useHistory();
-  const { pathname: location, search } = useLocation();
-  const nextPage = () => {
-    const parsed = queryString.parse(search);
-    const { page, ...rest } = parsed;
-    const nextPage = (parseInt(page, 10) || 1) + 1;
-    const newParams = new URLSearchParams({
-      ...rest,
-    });
+  const { search } = useLocation();
 
+  const parsed = queryString.parse(search);
+  const { page, ...rest } = parsed;
+  const nextPage = (parseInt(page, 10) || 1) + 1;
+  const newParams = new URLSearchParams({
+    ...rest,
+  });
+
+  const handleClick = () => {
     newParams.append('page', nextPage);
 
     history.push({ search: newParams.toString() });
   };
 
+  if(nextPage > total) {
+    return null;
+  }
+
   return (
-    <button onClick={nextPage}>
+    <button onClick={handleClick}>
       {children}
     </button>
   );
@@ -41,12 +47,12 @@ const Home = () => {
     return <p>error</p>;
   }
 
-  const { results } = movies || {};
+  const { results, total_pages } = movies || {};
 
   return (
     <>
       {/* List header (description), ex => Popular Movies -------- page 1 of 500 */}
-      <Button>
+      <Button total={total_pages}>
         next
       </Button>
 
