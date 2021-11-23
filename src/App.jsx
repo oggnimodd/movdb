@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Scrollbars } from 'react-custom-scrollbars-2';
 import SideNavbar from './common/SideNavbar/SideNavbar';
 import Main from './layout/Main/Main';
 import Routes from './Routes';
@@ -12,9 +13,26 @@ const App = () => {
       <Flex>
         <SideNavbar />
         <Main>
-          <Navbar />
-          {/* header and filter component here */}
-          <Routes />
+          <Scrollbars
+            autoHide
+            autoHideDuration={200}
+            renderThumbVertical={(props) => (
+              <div
+                {...props}
+                className="custom-scrollbar-vertical"
+              />
+            )}
+            renderTrackVertical={(props) => (
+              <div
+                {...props}
+                className="track-vertical-body"
+              />
+            )}
+          >
+            <Navbar />
+            {/* header and filter component here */}
+            <Routes />
+          </Scrollbars>
         </Main>
       </Flex>
     </SideNavbarProvider>

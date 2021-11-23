@@ -2,4 +2,13 @@
   border-radius: 3px;
   background: linear-gradient(to bottom, #0472b3, #09305e, #c5c8e0);
   width: 0.4rem;
+  z-index: 9999;
+}
+
+.track-vertical-body{
+  background: transparent;
+  width: 0.4rem;
+  right: 0px;
+  top:0;
+  height: 100%;
 }

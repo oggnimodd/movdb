@@ -39,9 +39,12 @@ const SideNavbar = () => {
       <SideNavbarWrapper
         show={show}
       >
+        {/* Top Section navbar */}
         <Link to="/">
           <Brand />
         </Link>
+
+        {/* Scrollable section */}
         <Inner>
           <Scrollbars
             renderThumbVertical={(props) => (
