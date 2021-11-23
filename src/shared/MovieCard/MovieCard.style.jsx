@@ -1,26 +1,32 @@
 import tw, { styled } from 'twin.macro';
 
 export const CardWrapper = styled.div`
-  ${tw`h-full`}
+  ${tw`
+    w-full
+    overflow-hidden
+  `}
+  aspect-ratio: 1/1.45;
+
+
   a{
     ${tw`
       block
+      w-full
       h-full
     `}
   }
 `;
 
 export const CardImage = styled.div`
-  ${tw`
-    h-full
-  `}
-
+  ${tw`h-full`}
   img{
     ${tw`
       w-full
+      object-center
       object-cover
+      h-full
     `}
-    height: 300px;
+
   }
 `;
 

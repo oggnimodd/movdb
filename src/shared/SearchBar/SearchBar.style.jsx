@@ -24,7 +24,6 @@ export const SearchBarStyled = styled.div`
     ${tw`
       bg-transparent 
       outline-none
-      pl-9 
       font-primary
       border
       border-white 
@@ -43,6 +42,6 @@ export const SearchBarStyled = styled.div`
       ${tw`text-accent`}
     }
 
-    ${({ sideNavbar }) => (sideNavbar ? tw`w-full` : tw`w-72`)};
+    ${({ sideNavbar }) => (sideNavbar ? tw`w-full` : tw` lg:w-72`)};
   }
 `;

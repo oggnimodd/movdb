@@ -1,14 +1,15 @@
 /* eslint-disable camelcase */
 import React, { useState } from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { CardWrapper, CardImage, NoImage } from './MovieCard.style';
 import { Col } from '../Flexi';
 import 'twin.macro';
 import Link from '../Link';
 
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
 const baseURL = 'https://image.tmdb.org/t/p/w200/';
 const placeholderImage = new URL('../../assets/failed_image.png', import.meta.url).href;
-
-console.log(placeholderImage);
 
 const MovieCard = ({ movieDetails }) => {
   const {
@@ -27,10 +28,11 @@ const MovieCard = ({ movieDetails }) => {
             {
               imageURL
                 ? (
-                  <img
+                  <LazyLoadImage
                     src={baseURL + imageURL}
                     alt={title}
                     onError={onImageError}
+                    effect="blur"
                   />
                 )
                 : <NoImage />
