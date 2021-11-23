@@ -13,10 +13,6 @@ import SearchBar from '../../shared/SearchBar/SearchBar';
 const Navbar = () => {
   const { toggle } = useContext(SideNavbarContext);
 
-  const handleSubmit = () => {
-
-  };
-
   return (
     <NavbarWrapper>
       <Container>
@@ -33,7 +29,7 @@ const Navbar = () => {
           </MenuIcon>
 
           {/* Big Screen Nav */}
-          <SearchBar handleSubmit={handleSubmit} />
+          <SearchBar />
 
           <ToggleThemeButton>Dark Mode</ToggleThemeButton>
         </Nav>

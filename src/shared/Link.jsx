@@ -24,9 +24,11 @@ export const NavLink = (props) => {
 
 const Link = (props) => {
   const { children, ...rest } = props;
+  const { close } = useContext(SideNavbarContext);
 
   const scrollToTop = () => {
     window.scrollTo(0, 0);
+    close();
   };
 
   return (

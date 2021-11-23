@@ -6,11 +6,12 @@ import { Spinner, Skeleton } from './Spinner';
 export const Wrapper = styled.div`
   ${tw`
     w-full 
-    h-screen 
     flex 
     items-center 
     justify-center
   `}
+
+  height: calc(100vh - 100px);
 `;
 
 const Fallback = () => {
