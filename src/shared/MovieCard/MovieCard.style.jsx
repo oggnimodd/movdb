@@ -19,6 +19,12 @@ export const CardWrapper = styled.div`
 
 export const CardImage = styled.div`
   ${tw`h-full`}
+
+  /* overwrite image lazyload component height */
+  span{
+    height: 100%;
+  }
+
   img{
     ${tw`
       w-full
