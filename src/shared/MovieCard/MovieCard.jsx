@@ -8,6 +8,7 @@ import { Col } from '../Flexi';
 import 'twin.macro';
 import Link from '../Link';
 import { formatYear } from '../../util/formatYear';
+import { UnderlineAnimation } from '../UnderlineAnimation';
 
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
@@ -42,7 +43,13 @@ const MovieCard = ({ movieDetails }) => {
             }
           </CardImage>
         </Link>
-        <Title>{title}</Title>
+        <Title>
+          <Link to={`/movie/${id}`}>
+            <UnderlineAnimation size={2}>
+              {title}
+            </UnderlineAnimation>
+          </Link>
+        </Title>
         {/* year only */}
         <Year>{releaseDate && formatYear(releaseDate)}</Year>
       </CardWrapper>

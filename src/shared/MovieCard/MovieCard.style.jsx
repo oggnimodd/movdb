@@ -1,4 +1,5 @@
 import tw, { styled } from 'twin.macro';
+import { UnderlineAnimation } from '../UnderlineAnimation';
 
 export const CardWrapper = styled.div`
   ${tw`
@@ -17,7 +18,7 @@ export const CardWrapper = styled.div`
 `;
 
 export const CardImage = styled.div`
-  ${tw`h-full`}
+  ${tw`h-full relative`}
 
   /* overwrite image lazyload component height */
   span{
@@ -49,12 +50,20 @@ export const NoImage = styled.div`
   background-color: #DBDBDB;
 `;
 
+export const Score = styled.div`
+  ${tw`
+    absolute
+  `}
+`;
+
 export const Title = styled.h2`
   ${tw`
     mt-2
     font-primary 
-    font-bold
+    font-semibold
     mb-1
+    inline-block
+    hover:text-accent
   `}
 `;
 
