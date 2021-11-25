@@ -1,10 +1,27 @@
 import React, { useState, useRef } from 'react';
 import { BsThreeDots, BsFillBookmarkFill } from 'react-icons/bs';
-import { AiFillHeart, AiOutlineConsoleSql } from 'react-icons/ai';
+import { AiFillHeart } from 'react-icons/ai';
+import { toast } from 'react-toastify';
 import {
   CardActionsWrapper, Icon, Actions, ActionItem, ActionIcon,
 } from './CardActions.style';
 import useClickOutside from '../../hooks/useClickOutside';
+import 'react-toastify/dist/ReactToastify.css';
+
+// Toast Message
+const ToastMessage = ({ title, type, connect }) => {
+  return (
+    <>
+      <b className="toast-message-title">
+        {title}
+      </b>
+      <br />
+      {connect}
+      <br />
+      <b className="toast-message-type">{type}</b>
+    </>
+  );
+};
 
 const CardActions = ({ details }) => {
   const [show, setShow] = useState(false);
@@ -36,6 +53,13 @@ const CardActions = ({ details }) => {
         ...localObject,
         [type]: list,
       }));
+      toast(<ToastMessage
+        title={details.title}
+        type={type}
+        connect="added to"
+      />, {
+        className: 'add',
+      });
     }else{
       // if  exist delete from localstorage
       const newList = list.filter((i) => i.id !== details.id);
@@ -43,6 +67,13 @@ const CardActions = ({ details }) => {
         ...localObject,
         [type]: newList,
       }));
+      toast(<ToastMessage
+        title={details.title}
+        type={type}
+        connect="removed from"
+      />, {
+        className: 'remove',
+      });
     }
   };
 

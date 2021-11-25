@@ -21,7 +21,7 @@ const useShelf = (type) => {
   useEffect(() => {
     setLoading(true);
     getMovies();
-  }, [list]);
+  }, []);
 
   return {
     movies, error, loading,

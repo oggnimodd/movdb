@@ -6,6 +6,7 @@ import Routes from './Routes';
 import Navbar from './common/Navbar/Navbar';
 import { Flex } from './layout/Flex';
 import SideNavbarProvider from './context/sideNavbar.context';
+import CustomToast from './shared/CustomToast/CustomToast';
 
 const App = () => {
   // Create Localstorage
@@ -21,6 +22,7 @@ const App = () => {
 
   return (
     <SideNavbarProvider>
+      <CustomToast />
       <Flex>
         <SideNavbar />
         <Main>
