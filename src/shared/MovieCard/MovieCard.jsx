@@ -1,10 +1,13 @@
 /* eslint-disable camelcase */
 import React, { useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { CardWrapper, CardImage, NoImage } from './MovieCard.style';
+import {
+  CardWrapper, CardImage, NoImage, Title, Year,
+} from './MovieCard.style';
 import { Col } from '../Flexi';
 import 'twin.macro';
 import Link from '../Link';
+import { formatYear } from '../../util/formatYear';
 
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
@@ -39,6 +42,9 @@ const MovieCard = ({ movieDetails }) => {
             }
           </CardImage>
         </Link>
+        <Title>{title}</Title>
+        {/* year only */}
+        <Year>{releaseDate && formatYear(releaseDate)}</Year>
       </CardWrapper>
     </Col>
   );

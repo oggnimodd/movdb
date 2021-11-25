@@ -3,7 +3,6 @@ import tw, { styled } from 'twin.macro';
 export const CardWrapper = styled.div`
   ${tw`
     w-full
-    overflow-hidden
   `}
   aspect-ratio: 1/1.45;
 
@@ -48,4 +47,23 @@ export const NoImage = styled.div`
 
   background-image: url(${placeholderImage});
   background-color: #DBDBDB;
+`;
+
+export const Title = styled.h2`
+  ${tw`
+    mt-2
+    font-primary 
+    font-bold
+    mb-1
+  `}
+`;
+
+export const Year = styled.p`
+  ${tw`
+    font-secondary
+    text-sm
+    text-grey
+    font-semibold
+    font-bold
+  `}
 `;
