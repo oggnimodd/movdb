@@ -22,6 +22,7 @@ module.exports = {
       },
       borderColor: {
         accent,
+        primary,
       },
     },
   },

@@ -18,21 +18,22 @@ export const CardWrapper = styled.div`
 `;
 
 export const CardImage = styled.div`
-  ${tw`h-full relative`}
+  ${tw`h-full w-full relative`}
 
   /* overwrite image lazyload component height */
   span{
     height: 100%;
+    width: 100%;
   }
 
   img{
     ${tw`
+      inline-block
       w-full
       object-center
       object-cover
       h-full
     `}
-
   }
 `;
 
@@ -52,13 +53,32 @@ export const NoImage = styled.div`
 
 export const Score = styled.div`
   ${tw`
-    absolute
+    absolute 
+    bottom-0
+    right-0
+    rounded-full 
+    text-black
+    font-secondary
+    font-bold
+    flex
+    items-center
+    justify-center
+    text-sm
+    pointer-events-auto
+    border-4
+    border-primary
   `}
+
+  width: 40px;
+  height: 40px;
+  transform: translateY(50%);
+  background-color: ${(props) => props.bg};
+  opacity: 0.96;
 `;
 
 export const Title = styled.h2`
   ${tw`
-    mt-2
+    mt-4
     font-primary 
     font-semibold
     mb-1

@@ -2,13 +2,15 @@
 import React, { useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import {
-  CardWrapper, CardImage, NoImage, Title, Year,
+  CardWrapper, CardImage, NoImage, Title, Year, Score,
 } from './MovieCard.style';
 import { Col } from '../Flexi';
 import 'twin.macro';
 import Link from '../Link';
 import { formatYear } from '../../util/formatYear';
 import { UnderlineAnimation } from '../UnderlineAnimation';
+import { scoreColors } from '../../util/scoreColor';
+import CardActions from '../CardActions/CardActions';
 
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
@@ -19,6 +21,8 @@ const MovieCard = ({ movieDetails }) => {
   const {
     poster_path: imageURL, title, release_date: releaseDate, vote_average: point, id,
   } = movieDetails;
+
+  const scoreBg = scoreColors(point);
 
   const onImageError = (e) => {
     e.target.src = placeholderImage;
@@ -41,8 +45,10 @@ const MovieCard = ({ movieDetails }) => {
                 )
                 : <NoImage />
             }
+            <Score bg={scoreBg}>{point !== 0 ? point : 'NR'}</Score>
           </CardImage>
         </Link>
+        <CardActions id={id} />
         <Title>
           <Link to={`/movie/${id}`}>
             <UnderlineAnimation size={2}>
