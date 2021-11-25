@@ -1,11 +1,14 @@
-import React, { useState, useRef } from 'react';
-import { BsThreeDots, BsFillBookmarkFill } from 'react-icons/bs';
-import { AiFillHeart } from 'react-icons/ai';
+import React, {
+  useState, useRef, useEffect, useContext,
+} from 'react';
+import { BsThreeDots, BsFillBookmarkFill, BsBookmark } from 'react-icons/bs';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { toast } from 'react-toastify';
 import {
   CardActionsWrapper, Icon, Actions, ActionItem, ActionIcon,
 } from './CardActions.style';
 import useClickOutside from '../../hooks/useClickOutside';
+import { ListContext } from '../../hooks/useShelf';
 import 'react-toastify/dist/ReactToastify.css';
 
 // Toast Message
@@ -24,8 +27,11 @@ const ToastMessage = ({ title, type, connect }) => {
 };
 
 const CardActions = ({ details }) => {
+  const [inFavorite, setInFavorite] = useState();
+  const [inWatchlist, setInWatchlist] = useState();
   const [show, setShow] = useState(false);
   const actionRef = useRef();
+  const { addToUI, removeFromUI } = useContext(ListContext) || {};
 
   const toggleMenu = (e) => {
     setShow(!show);
@@ -60,6 +66,8 @@ const CardActions = ({ details }) => {
       />, {
         className: 'add',
       });
+      type === 'favorites' ? setInFavorite(true) : setInWatchlist(true);
+      addToUI(details, type);
     }else{
       // if  exist delete from localstorage
       const newList = list.filter((i) => i.id !== details.id);
@@ -74,8 +82,26 @@ const CardActions = ({ details }) => {
       />, {
         className: 'remove',
       });
+      type === 'favorites' ? setInFavorite(false) : setInWatchlist(false);
+      removeFromUI(details, type);
     }
   };
+
+  // get watchlist and favorites state onmount
+  useEffect(() => {
+    // Check if shelf exist
+    const local = localStorage.getItem('shelf');
+    const localObject = JSON.parse(local);
+    const watchlist = localObject.watchlist;
+    const favorites = localObject.favorites;
+
+    // // check if item already exist
+    const isWatchlist = watchlist.find((i) => i.id === details.id);
+    const isFavorite = favorites.find((i) => i.id === details.id);
+
+    isWatchlist && setInWatchlist(true);
+    isFavorite && setInFavorite(true);
+  }, []);
 
   return (
     <CardActionsWrapper ref={actionRef}>
@@ -86,15 +112,25 @@ const CardActions = ({ details }) => {
         show
         && (
           <Actions>
-            <ActionItem onClick={() => toggleAction('watchlist')}>
+            <ActionItem
+              added={inWatchlist}
+              onClick={() => toggleAction('watchlist')}
+            >
               <ActionIcon>
-                <BsFillBookmarkFill />
+                {
+                  inWatchlist ? <BsFillBookmarkFill /> : <BsBookmark />
+                }
               </ActionIcon>
               Watchlist
             </ActionItem>
-            <ActionItem onClick={() => toggleAction('favorites')}>
+            <ActionItem
+              added={inFavorite}
+              onClick={() => toggleAction('favorites')}
+            >
               <ActionIcon>
-                <AiFillHeart />
+                {
+                  inFavorite ? <AiFillHeart /> : <AiOutlineHeart />
+                }
               </ActionIcon>
               Favorite
             </ActionItem>

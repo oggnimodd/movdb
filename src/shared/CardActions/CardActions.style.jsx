@@ -73,6 +73,9 @@ export const ActionItem = styled.button`
 
   width: 150px;
 
+  ${({ added }) => added && tw`bg-accent`}
+
+
   @media screen and (min-width:${breakpoints.lg}px){
     width: 170px;
   }
@@ -92,6 +95,5 @@ export const ActionItem = styled.button`
 export const ActionIcon = styled.span`
   ${tw`
     mr-2  
-    text-center
   `}
 `;

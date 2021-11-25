@@ -1,31 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
-const useShelf = (type) => {
-  const [movies, setMovies] = useState([]);
-  const [error, setError] = useState();
-  const [loading, setLoading] = useState();
+export const ListContext = createContext();
+
+const ListProvider = ({ children }) => {
   const local = localStorage.getItem('shelf');
-  const localObject = JSON.parse(local);
-  const list = localObject[type];
-
-  const getMovies = async () => {
-    try {
-      setMovies(list);
-      setError(false);
-      setLoading(false);
-    } catch (error) {
-      setError(error);
-    }
-  };
+  const storageValue = JSON.parse(local);
+  const [list, setList] = useState();
 
   useEffect(() => {
-    setLoading(true);
-    getMovies();
+    setList(storageValue);
   }, []);
 
-  return {
-    movies, error, loading,
+  const addToUI = (item, type) => {
+    list[type].push(item);
+
+    setList({
+      ...list,
+    });
   };
+
+  const removeFromUI = (item, type) => {
+    const prevList = list[type];
+    const newList = prevList.filter((i) => i.id !== item.id);
+
+    list[type] = newList;
+
+    setList({
+      ...list,
+    });
+  };
+
+  return (
+    <ListContext.Provider value={{ list, addToUI, removeFromUI }}>
+      {children}
+    </ListContext.Provider>
+  );
 };
 
-export default useShelf;
+export default ListProvider;

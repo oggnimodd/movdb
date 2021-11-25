@@ -7,6 +7,7 @@ import Navbar from './common/Navbar/Navbar';
 import { Flex } from './layout/Flex';
 import SideNavbarProvider from './context/sideNavbar.context';
 import CustomToast from './shared/CustomToast/CustomToast';
+import ListProvider from './hooks/useShelf';
 
 const App = () => {
   // Create Localstorage
@@ -44,7 +45,9 @@ const App = () => {
           >
             <Navbar />
             {/* header and filter component here */}
-            <Routes />
+            <ListProvider>
+              <Routes />
+            </ListProvider>
           </Scrollbars>
         </Main>
       </Flex>

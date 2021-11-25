@@ -20,7 +20,7 @@ export const SideNavbarWrapper = styled.aside`
   `}
 
   ${({ show }) => show && tw`translate-x-0`}
-  z-index: 9999;
+  z-index: 8888;
   transition: all 300ms ease-in-out; 
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 
