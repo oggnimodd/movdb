@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 import { BsThreeDots, BsFillBookmarkFill, BsBookmark } from 'react-icons/bs';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import { GrFormClose } from 'react-icons/gr';
 import { toast } from 'react-toastify';
 import {
   CardActionsWrapper, Icon, Actions, ActionItem, ActionIcon, IconWrapper,
@@ -107,7 +108,7 @@ const CardActions = ({ details }) => {
     <CardActionsWrapper ref={actionRef}>
       <IconWrapper onClick={toggleMenu}>
         <Icon>
-          <BsThreeDots />
+          {show ? <GrFormClose /> : <BsThreeDots /> }
         </Icon>
       </IconWrapper>
       {
