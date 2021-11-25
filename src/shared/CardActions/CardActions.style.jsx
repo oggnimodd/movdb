@@ -6,14 +6,29 @@ export const CardActionsWrapper = styled.div`
   ${tw`
     absolute 
     top-0
-    m-2 
   `}
   
   right: 15px;
 `;
 
-export const Icon = styled.button`
+export const IconWrapper = styled.button`
   ${tw`
+    relative
+    top-0
+    right-0 
+    flex
+    items-center 
+    justify-center
+    outline-none
+  `}
+
+  width: 50px;
+  height: 50px;
+`;
+
+export const Icon = styled.div`
+  ${tw`
+    absolute
     inline-block
     rounded-full
     text-black
@@ -21,6 +36,8 @@ export const Icon = styled.button`
     flex
     items-center 
     justify-center
+    right-2 
+    top-2
   `}
 
   width: 20px;
@@ -39,13 +56,13 @@ export const Icon = styled.button`
 export const Actions = styled.div`
   ${tw`
     absolute
-    right-0
+    right-2
     bg-white
     mt-2
     rounded-sm
     z-50
   `}
-
+  top: 25px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   /* Very small screen */

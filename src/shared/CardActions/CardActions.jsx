@@ -5,7 +5,7 @@ import { BsThreeDots, BsFillBookmarkFill, BsBookmark } from 'react-icons/bs';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { toast } from 'react-toastify';
 import {
-  CardActionsWrapper, Icon, Actions, ActionItem, ActionIcon,
+  CardActionsWrapper, Icon, Actions, ActionItem, ActionIcon, IconWrapper,
 } from './CardActions.style';
 import useClickOutside from '../../hooks/useClickOutside';
 import { ListContext } from '../../hooks/useShelf';
@@ -105,9 +105,11 @@ const CardActions = ({ details }) => {
 
   return (
     <CardActionsWrapper ref={actionRef}>
-      <Icon onClick={toggleMenu}>
-        <BsThreeDots />
-      </Icon>
+      <IconWrapper onClick={toggleMenu}>
+        <Icon>
+          <BsThreeDots />
+        </Icon>
+      </IconWrapper>
       {
         show
         && (
