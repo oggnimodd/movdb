@@ -38,6 +38,8 @@ export const Icon = styled.div`
     justify-center
     right-2 
     top-2
+    hover:bg-accent
+    hover:opacity-100
   `}
 
   width: 20px;
@@ -45,12 +47,6 @@ export const Icon = styled.div`
   background: #9EA5BB;
   opacity: 0.8;
 
-  &:hover{
-    ${tw`
-      bg-accent
-      opacity-100  
-    `}
-  }
 `;
 
 export const Actions = styled.div`
@@ -77,7 +73,7 @@ export const ActionItem = styled.button`
     py-2
     lg:py-3
     px-2
-    hover:bg-accent
+    sm:hover:bg-accent
     text-left
     font-primary
     font-semibold
