@@ -48,7 +48,7 @@ const MovieCard = ({ movieDetails }) => {
             <Score bg={scoreBg}>{point !== 0 ? point : 'NR'}</Score>
           </CardImage>
         </Link>
-        <CardActions id={id} />
+        <CardActions details={movieDetails} />
         <Title>
           <Link to={`/movie/${id}`}>
             <UnderlineAnimation size={2}>

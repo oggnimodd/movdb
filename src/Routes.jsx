@@ -10,7 +10,7 @@ const Cast = lazy(() => import('./pages/Cast'));
 const Favorites = lazy(() => import('./pages/Favorites'));
 const Movie = lazy(() => import('./pages/Movie'));
 const NotFound = lazy(() => import('./pages/NotFound'));
-const WatchLater = lazy(() => import('./pages/WatchLater'));
+const WatchList = lazy(() => import('./pages/WatchList'));
 const MoviesInGenre = lazy(() => import('./pages/MoviesInGenre'));
 const SearchResults = lazy(() => import('./pages/SearchResults'));
 
@@ -33,7 +33,7 @@ const Routes = () => {
           <Route exact path="/search" component={SearchResults} />
 
           <Route exact path="/favorites" component={Favorites} />
-          <Route exact path="/watch-later" component={WatchLater} />
+          <Route exact path="/watch-list" component={WatchList} />
           {/* 404 PAGE */}
           <Route path="*" component={NotFound} />
         </Switch>

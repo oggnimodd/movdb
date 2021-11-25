@@ -1,12 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { BsThreeDots, BsFillBookmarkFill } from 'react-icons/bs';
-import { AiFillHeart } from 'react-icons/ai';
+import { AiFillHeart, AiOutlineConsoleSql } from 'react-icons/ai';
 import {
   CardActionsWrapper, Icon, Actions, ActionItem, ActionIcon,
 } from './CardActions.style';
 import useClickOutside from '../../hooks/useClickOutside';
 
-const CardActions = ({ id }) => {
+const CardActions = ({ details }) => {
   const [show, setShow] = useState(false);
   const actionRef = useRef();
 
@@ -19,6 +19,32 @@ const CardActions = ({ id }) => {
   useClickOutside(actionRef, closeMenu);
 
   // Localstorage
+  const toggleAction = (type) => {
+    // Check if shelf exist
+    const local = localStorage.getItem('shelf');
+
+    const localObject = JSON.parse(local);
+    const list = localObject[type];
+
+    // check if item already exist
+    const isExist = list.find((i) => i.id === details.id);
+
+    // if not exist add to localstorage
+    if(!isExist) {
+      list.push(details);
+      localStorage.setItem('shelf', JSON.stringify({
+        ...localObject,
+        [type]: list,
+      }));
+    }else{
+      // if  exist delete from localstorage
+      const newList = list.filter((i) => i.id !== details.id);
+      localStorage.setItem('shelf', JSON.stringify({
+        ...localObject,
+        [type]: newList,
+      }));
+    }
+  };
 
   return (
     <CardActionsWrapper ref={actionRef}>
@@ -29,13 +55,13 @@ const CardActions = ({ id }) => {
         show
         && (
           <Actions>
-            <ActionItem>
+            <ActionItem onClick={() => toggleAction('watchlist')}>
               <ActionIcon>
                 <BsFillBookmarkFill />
               </ActionIcon>
               Watchlist
             </ActionItem>
-            <ActionItem>
+            <ActionItem onClick={() => toggleAction('favorites')}>
               <ActionIcon>
                 <AiFillHeart />
               </ActionIcon>

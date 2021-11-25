@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useEffect } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars-2';
 import SideNavbar from './common/SideNavbar/SideNavbar';
 import Main from './layout/Main/Main';
@@ -8,6 +8,17 @@ import { Flex } from './layout/Flex';
 import SideNavbarProvider from './context/sideNavbar.context';
 
 const App = () => {
+  // Create Localstorage
+  useEffect(() => {
+    const local = localStorage.getItem('shelf');
+    if(!local) {
+      localStorage.setItem('shelf', JSON.stringify({
+        favorites: [],
+        watchlist: [],
+      }));
+    }
+  }, []);
+
   return (
     <SideNavbarProvider>
       <Flex>

@@ -3,8 +3,8 @@ import MovieList from '../layout/MovieList/MovieList';
 import Fallback from '../shared/Fallback';
 import useShelf from '../hooks/useShelf';
 
-const Favorites = () => {
-  const { movies, loading, error } = useShelf('favorites');
+const WatchList = () => {
+  const { movies, loading, error } = useShelf('watchlist');
 
   if(loading) {
     return <Fallback />;
@@ -21,4 +21,4 @@ const Favorites = () => {
   );
 };
 
-export default Favorites;
+export default WatchList;

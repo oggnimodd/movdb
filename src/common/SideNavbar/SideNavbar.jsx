@@ -95,8 +95,8 @@ const SideNavbar = () => {
                 <MdOutlineMovieFilter />
                 Favorites
               </NavLink>
-              <NavLink to="watch-later">
-                <MdOutlineMovieFilter />Watch Later
+              <NavLink to="/watch-list">
+                <MdOutlineMovieFilter />Watchlist
               </NavLink>
             </SubSection>
           </Scrollbars>
