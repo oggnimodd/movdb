@@ -41,7 +41,6 @@ export const Actions = styled.div`
     absolute
     right-0
     bg-white
-    py-2
     mt-2
     rounded-sm
     z-50
@@ -66,28 +65,34 @@ export const ActionItem = styled.button`
     font-primary
     font-semibold
     text-black
-    text-sm 
     flex
     items-center
   `}
 
   width: 150px;
+  font-size: 12px;
+  z-index: 5000;
 
   ${({ added }) => added && tw`bg-accent`}
 
-
-  @media screen and (min-width:${breakpoints.lg}px){
-    width: 170px;
-  }
-
   svg{
-    font-size: 18px;
+    font-size: 14px;
     fill:${colors.primary};
   }
 
-  &:nth-of-type(2){
+
+  @media screen and (min-width:${breakpoints.lg}px){
+    width: 190px;
+    font-size:14px;
+
     svg{
-      font-size: 20px;
+      font-size: 18px;
+    }
+
+    &:nth-of-type(2){
+      svg{
+        font-size: 20px;
+      }
     }
   }
 `;

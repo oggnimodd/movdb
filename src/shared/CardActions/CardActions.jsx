@@ -121,7 +121,7 @@ const CardActions = ({ details }) => {
                   inWatchlist ? <BsFillBookmarkFill /> : <BsBookmark />
                 }
               </ActionIcon>
-              Watchlist
+              {inWatchlist ? 'Remove from' : 'Add To'}  Watchlist
             </ActionItem>
             <ActionItem
               added={inFavorite}
@@ -132,7 +132,7 @@ const CardActions = ({ details }) => {
                   inFavorite ? <AiFillHeart /> : <AiOutlineHeart />
                 }
               </ActionIcon>
-              Favorite
+              {inFavorite ? 'Remove from' : 'Add To'} Favorites
             </ActionItem>
           </Actions>
         )
