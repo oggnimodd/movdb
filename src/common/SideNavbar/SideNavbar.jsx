@@ -69,6 +69,20 @@ const SideNavbar = () => {
               <NavLink to="/discover/top-rated"><MdOutlineMovieFilter />Top Rated</NavLink>
               <NavLink to="/discover/upcoming"><MdOutlineMovieFilter />Upcoming</NavLink>
             </SubSection>
+
+            <SubSection>
+              <SubSectionHeader>
+                SHELF
+              </SubSectionHeader>
+              <NavLink to="/favorites">
+                <MdOutlineMovieFilter />
+                Favorites
+              </NavLink>
+              <NavLink to="/watch-list">
+                <MdOutlineMovieFilter />Watchlist
+              </NavLink>
+            </SubSection>
+
             <SubSection>
               <SubSectionHeader>
                 GENRES
@@ -86,18 +100,6 @@ const SideNavbar = () => {
                 );
               })
             }
-            </SubSection>
-            <SubSection>
-              <SubSectionHeader>
-                SHELF
-              </SubSectionHeader>
-              <NavLink to="/favorites">
-                <MdOutlineMovieFilter />
-                Favorites
-              </NavLink>
-              <NavLink to="/watch-list">
-                <MdOutlineMovieFilter />Watchlist
-              </NavLink>
             </SubSection>
           </Scrollbars>
         </Inner>
