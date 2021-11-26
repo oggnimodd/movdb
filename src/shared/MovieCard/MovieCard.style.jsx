@@ -7,7 +7,6 @@ export const CardWrapper = styled.div`
   `}
   aspect-ratio: 1/1.45;
 
-
   a{
     ${tw`
       block

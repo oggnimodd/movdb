@@ -45,7 +45,7 @@ const MovieCard = ({ movieDetails }) => {
                 )
                 : <NoImage />
             }
-            <Score bg={scoreBg}>{point !== 0 ? point : 'NR'}</Score>
+            <Score bg={scoreBg}>{point !== 0 ? point.toFixed(1) : 'NR'}</Score>
           </CardImage>
         </Link>
         <CardActions details={movieDetails} />

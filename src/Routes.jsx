@@ -19,26 +19,24 @@ const SearchResults = lazy(() => import('./pages/SearchResults'));
 
 const Routes = () => {
   return (
-    <Container>
-      <Suspense fallback={<div>loading</div>}>
-        <Switch>
-          <Redirect exact path="/" to="/discover/popular" />
-          <Redirect exact path="/discover" to="/discover/popular" />
-          <Route exact path={['/discover/:discoverID(popular|top-rated|upcoming)']} component={Home} />
+    <Suspense fallback={<div>loading</div>}>
+      <Switch>
+        <Redirect exact path="/" to="/discover/popular" />
+        <Redirect exact path="/discover" to="/discover/popular" />
+        <Route exact path={['/discover/:discoverID(popular|top-rated|upcoming)']} component={Home} />
 
-          <Route exact path="/genre/:genreID" component={MoviesInGenre} />
-          <Route exact path="/movie/:movieID" component={Movie} />
-          <Route exact path="/cast/castID" component={Cast} />
+        <Route exact path="/genre/:genreID" component={MoviesInGenre} />
+        <Route exact path="/movie/:movieID" component={Movie} />
+        <Route exact path="/cast/castID" component={Cast} />
 
-          <Route exact path="/search" component={SearchResults} />
+        <Route exact path="/search" component={SearchResults} />
 
-          <Route exact path="/favorites" component={Favorites} />
-          <Route exact path="/watch-list" component={WatchList} />
-          {/* 404 PAGE */}
-          <Route path="*" component={NotFound} />
-        </Switch>
-      </Suspense>
-    </Container>
+        <Route exact path="/favorites" component={Favorites} />
+        <Route exact path="/watch-list" component={WatchList} />
+        {/* 404 PAGE */}
+        <Route path="*" component={NotFound} />
+      </Switch>
+    </Suspense>
   );
 };
 
