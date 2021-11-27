@@ -5,8 +5,6 @@ import MovieCard from '../../shared/MovieCard/MovieCard';
 import 'twin.macro';
 
 const MovieList = ({ movies }) => {
-  console.log(movies);
-
   return (
     <Container>
       <ListWrapper>
