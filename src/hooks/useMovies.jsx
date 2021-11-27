@@ -4,6 +4,11 @@ import queryString from 'query-string';
 import { baseURL, apiKey } from '../config/movieAPI';
 import { genres } from '../data/genres';
 
+const validateGenre = (id) => {
+  const inGenres = genres.filter((i) => i.name.toLowerCase() === id);
+  return inGenres.length;
+};
+
 const createURL = (type, page, params, search) => {
   const query = {
     page: '',
@@ -24,9 +29,11 @@ const createURL = (type, page, params, search) => {
 
   if(type === 'genre') {
     const { genreID } = params;
-    const genre = genres.filter((i) => i.name.toLowerCase() === genreID)[0].id;
-    query.with_genres = genre;
-    url = `${baseURL}discover/movie?${queryString.stringify(query)}`;
+    if(validateGenre(genreID)) {
+      const genre = genres.filter((i) => i.name.toLowerCase() === genreID)[0].id;
+      query.with_genres = genre;
+      url = `${baseURL}discover/movie?${queryString.stringify(query)}`;
+    }
   }
 
   if(type === 'search') {
@@ -52,6 +59,10 @@ const useMovies = (type) => {
   const parsed = queryString.parse(search);
   const { page, query } = parsed;
   const url = createURL(type, page, params, query);
+
+  if(!url) {
+    history.push('/404');
+  }
 
   useEffect(() => {
     const getMovies = async () => {
