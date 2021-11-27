@@ -13,6 +13,7 @@ import {
   SubSection,
   SubTitle,
   SubInfo,
+  NoImage,
 } from './MovieDetails.style';
 import 'twin.macro';
 import { RenderGenres } from './ExtractArray';
@@ -45,15 +46,22 @@ const MovieDetails = ({ details, children }) => {
       <StyledContainer>
         <Content>
           <div tw="flex flex-wrap">
-            <div tw="w-full lg:w-5/12">
+            <div tw="w-full lg:w-4/12">
               <ImageWrapper>
-                <img
-                  src={posterBaseURL + imageURL}
-                  alt={title}
-                />
+                {
+                  imageURL
+                    ? (
+                      <LazyLoadImage
+                        src={posterBaseURL + imageURL}
+                        alt={title}
+                        effect="blur"
+                      />
+                    )
+                    : <NoImage />
+                }
               </ImageWrapper>
             </div>
-            <div tw="w-full lg:w-7/12">
+            <div tw="w-full lg:w-8/12">
               <Details>
                 <Title>{title}</Title>
                 <Overview>{overview}</Overview>

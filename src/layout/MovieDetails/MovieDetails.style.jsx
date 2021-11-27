@@ -1,6 +1,6 @@
 import tw, { styled } from 'twin.macro';
-import { colors } from '../../constants/colors';
 import { Container } from '../../shared/Flexi';
+import { breakpoints }from '../../constants/breakpoints';
 
 export const DetailsWrapper = styled.div`
   ${tw`
@@ -14,6 +14,8 @@ export const StyledContainer = styled(Container)`
     top-0
     left-0
     z-50
+    px-0
+    sm:px-[15px]
   `}
 `;
 
@@ -39,7 +41,12 @@ export const Backdrop = styled.div`
   `}
 
   min-height: 300px;
-  aspect-ratio: 1920 / 1280;
+  aspect-ratio: 1 / 1.2;
+
+  @media screen and (min-width:${breakpoints.sm}px){
+    min-height: 300px;
+    aspect-ratio: 1920 / 1080;
+  }
 
   span{
     height: 100%;
@@ -62,7 +69,7 @@ export const Content = styled.div`
     rounded-lg 
     bg-primary
     mt-60
-    px-5
+    px-[15px]
     py-20
     relative
   `}
@@ -97,9 +104,22 @@ export const ImageWrapper = styled.div`
   }
 `;
 
+const placeholderImage = new URL('../../assets/placeholder.svg', import.meta.url).href;
+export const NoImage = styled.div`
+  ${tw`
+    w-full
+    h-full
+    bg-no-repeat
+    bg-center
+  `}
+
+  background-image: url(${placeholderImage});
+  background-color: #DBDBDB;
+`;
+
 export const Details = styled.div`
   ${tw`
-    px-6
+    sm:px-6
   `}
 `;
 

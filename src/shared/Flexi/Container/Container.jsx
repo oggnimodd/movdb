@@ -6,6 +6,7 @@ const Container = ({
 }) => {
   return (
     <ContainerStyle
+      className="container"
       {...restProps}
     >
       {children}
