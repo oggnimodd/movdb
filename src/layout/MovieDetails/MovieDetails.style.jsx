@@ -75,10 +75,7 @@ export const Content = styled.div`
   `}
 
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-  /* From https://css.glass */
-  background: rgba(21, 31, 48, 0.58);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  background: rgba(21, 31, 48, 0.7);
   border: 1px solid rgba(21, 31, 48, 0.31);
 `;
 

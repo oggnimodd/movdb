@@ -33,6 +33,8 @@ const MovieDetails = ({ details, children }) => {
     genres,
   } = details;
 
+  console.log('Gewgew');
+
   return (
     <DetailsWrapper>
       <Backdrop>
