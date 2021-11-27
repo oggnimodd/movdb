@@ -12,7 +12,7 @@ import { UnderlineAnimation } from '../UnderlineAnimation';
 import { scoreColors } from '../../util/scoreColor';
 import CardActions from '../CardActions/CardActions';
 
-import 'react-lazy-load-image-component/src/effects/blur.css';
+import 'react-lazy-load-image-component/src/effects/opacity.css';
 
 const baseURL = 'https://image.tmdb.org/t/p/w200/';
 const placeholderImage = new URL('../../assets/failed_image.png', import.meta.url).href;
@@ -40,7 +40,7 @@ const MovieCard = ({ movieDetails }) => {
                     src={baseURL + imageURL}
                     alt={title}
                     onError={onImageError}
-                    effect="blur"
+                    effect="opacity"
                   />
                 )
                 : <NoImage />

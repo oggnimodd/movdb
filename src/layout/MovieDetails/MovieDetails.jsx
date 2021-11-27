@@ -18,7 +18,7 @@ import {
 import 'twin.macro';
 import { RenderGenres } from './ExtractArray';
 
-import 'react-lazy-load-image-component/src/effects/blur.css';
+import 'react-lazy-load-image-component/src/effects/opacity.css';
 
 const baseURL = 'https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/';
 const posterBaseURL = 'https://image.tmdb.org/t/p/w500/';
@@ -33,8 +33,6 @@ const MovieDetails = ({ details, children }) => {
     genres,
   } = details;
 
-  console.log('Gewgew');
-
   return (
     <DetailsWrapper>
       <Backdrop>
@@ -42,7 +40,7 @@ const MovieDetails = ({ details, children }) => {
         <LazyLoadImage
           src={baseURL + backdrop}
           alt={title}
-          effect="blur"
+          effect="opacity"
         />
       </Backdrop>
       <StyledContainer>
@@ -56,7 +54,7 @@ const MovieDetails = ({ details, children }) => {
                       <LazyLoadImage
                         src={posterBaseURL + imageURL}
                         alt={title}
-                        effect="blur"
+                        effect="opacity"
                       />
                     )
                     : <NoImage />

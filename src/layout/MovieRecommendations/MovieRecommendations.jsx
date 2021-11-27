@@ -3,7 +3,7 @@ import MovieList from '../MovieList/MovieList';
 import { RecommendationWrapper, RecommendationTitle } from './MovieRecommendations.style';
 
 const MovieRecommendations = ({ details }) => {
-  const list = details.recommendations.results;
+  const list = details && details.recommendations.results;
 
   return (
     <RecommendationWrapper>
