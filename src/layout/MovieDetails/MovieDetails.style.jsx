@@ -88,6 +88,10 @@ export const ImageWrapper = styled.div`
 
   aspect-ratio: 500/750;
 
+  span {
+    width: 100%;
+  }
+
   img{
     ${tw`
       inline-block
