@@ -1,4 +1,5 @@
 import tw, { styled } from 'twin.macro';
+import { colors } from '../../constants/colors';
 
 export const VideoPlayerWrapper = styled.div`
   ${tw`
@@ -42,4 +43,25 @@ export const FrameWrapper = styled.div`
     left: 0;
     z-index : 1000;
   }
+`;
+
+export const ExitButton = styled.button`
+  ${tw`
+    absolute
+    top-0 
+    right-0
+    text-4xl
+    text-white
+    bg-accent
+    rounded-full
+    top-5
+  `}
+
+  svg{
+    fill: ${colors.accent};
+  }
+
+  right: 50%;
+  transform: translateX(50%);
+  z-index : 1000;
 `;

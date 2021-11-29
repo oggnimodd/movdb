@@ -1,8 +1,9 @@
 import React from 'react';
 import { Portal } from 'react-portal';
 import YouTube from 'react-youtube';
+import { GrFormClose } from 'react-icons/gr';
 import Backdrop from '../../common/Backdrop';
-import { VideoPlayerWrapper, FrameWrapper } from './TrailerVideoPlayer.style';
+import { VideoPlayerWrapper, FrameWrapper, ExitButton } from './TrailerVideoPlayer.style';
 
 const TrailerVideoPlayer = ({ videos, showTrailer, closeTrailer }) => {
   const video = videos.results.filter((i) => i.type === 'Trailer')[0];
@@ -33,6 +34,9 @@ const TrailerVideoPlayer = ({ videos, showTrailer, closeTrailer }) => {
             opts={opts}
           />
         </FrameWrapper>
+        <ExitButton onClick={closeTrailer}>
+          <GrFormClose />
+        </ExitButton>
       </VideoPlayerWrapper>
     </Portal>
   );
