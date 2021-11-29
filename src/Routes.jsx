@@ -1,9 +1,8 @@
 import React, { Suspense, lazy } from 'react';
 import {
-  Route, Redirect, Switch, useHistory, useLocation,
+  Route, Redirect, Switch,
 } from 'react-router-dom';
-import queryString from 'query-string';
-import { Container } from './shared/Flexi';
+import Fallback from './shared/Fallback';
 
 const Home = lazy(() => import('./pages/Home'));
 const Cast = lazy(() => import('./pages/Cast'));
@@ -19,7 +18,7 @@ const SearchResults = lazy(() => import('./pages/SearchResults'));
 
 const Routes = () => {
   return (
-    <Suspense fallback={<div>loading</div>}>
+    <Suspense fallback={<Fallback />}>
       <Switch>
         <Redirect exact path="/" to="/discover/popular" />
         <Redirect exact path="/discover" to="/discover/popular" />
