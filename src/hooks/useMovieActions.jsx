@@ -3,7 +3,20 @@ import { toast } from 'react-toastify';
 import { ListContext } from './useShelf';
 
 // Toast Message
-const ToastMessage = ({ title, type, connect }) => {
+export const ToastMessage = ({
+  title, type, connect, messageOnly,
+}) => {
+  if(messageOnly) {
+    return (
+      <>
+        <b className="toast-message-title">
+          {title}
+        </b>
+        <br />
+      </>
+    );
+  }
+
   return (
     <>
       <b className="toast-message-title">

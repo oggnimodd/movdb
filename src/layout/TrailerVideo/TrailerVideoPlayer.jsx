@@ -5,11 +5,10 @@ import { GrFormClose } from 'react-icons/gr';
 import Backdrop from '../../common/Backdrop';
 import { VideoPlayerWrapper, FrameWrapper, ExitButton } from './TrailerVideoPlayer.style';
 
-const TrailerVideoPlayer = ({ videos, showTrailer, closeTrailer }) => {
-  const video = videos.results.filter((i) => i.type === 'Trailer')[0];
+const TrailerVideoPlayer = ({ video, showTrailer, closeTrailer }) => {
   const ytKey = video?.key;
 
-  if(!showTrailer || !ytKey || videos.lenght === 0) return null;
+  if(!showTrailer || !ytKey || !video) return null;
 
   const opts = {
     height: '390',

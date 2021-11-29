@@ -18,6 +18,7 @@ module.exports = {
       },
       textColor: {
         accent,
+        primary,
         grey,
       },
       borderColor: {

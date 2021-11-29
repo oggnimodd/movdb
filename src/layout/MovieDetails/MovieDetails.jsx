@@ -52,12 +52,14 @@ const MovieDetails = ({ details, children }) => {
 
   const closeTrailer = () => setShowTrailer(false);
 
+  const video = videos.results.filter((i) => i.type === 'Trailer')[0];
+
   return (
     <DetailsWrapper>
       <TrailerVideoPlayer
         showTrailer={showTrailer}
         closeTrailer={closeTrailer}
-        videos={videos}
+        video={video}
       />
       <Backdrop>
         <GradientTransition />
@@ -87,11 +89,15 @@ const MovieDetails = ({ details, children }) => {
             </div>
             <div tw="w-full lg:w-8/12">
               <Details>
-                <Title>{title}</Title>
                 <MovieActions
+                  details={details}
+                  video={video}
                   details={details}
                   openTrailer={openTrailer}
                 />
+
+                <Title>{title}</Title>
+
                 <Overview>{overview}</Overview>
 
                 <SubSection>
