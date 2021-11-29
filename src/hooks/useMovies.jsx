@@ -37,8 +37,10 @@ const createURL = (type, page, params, search) => {
   }
 
   if(type === 'search') {
-    query.query = search;
-    url = `${baseURL}search/movie?${queryString.stringify(query)}`;
+    if(search) {
+      query.query = search;
+      url = `${baseURL}search/movie?${queryString.stringify(query)}`;
+    }
   }
 
   return url;
