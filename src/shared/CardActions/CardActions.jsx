@@ -49,8 +49,8 @@ const CardActions = ({ details }) => {
                 }
               </ActionIcon>
               {inWatchlist
-                ? 'Remove from'
-                : 'Add To'}
+                ? 'Remove from '
+                : 'Add To '}
               Watchlist
             </ActionItem>
             <ActionItem
@@ -65,8 +65,8 @@ const CardActions = ({ details }) => {
                 }
               </ActionIcon>
               {inFavorite
-                ? 'Remove from'
-                : 'Add To'}
+                ? 'Remove from '
+                : 'Add To '}
               Favorites
             </ActionItem>
           </Actions>
