@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import {
   DetailsWrapper,
@@ -23,6 +23,7 @@ import {
   RenderCountries,
 } from './ExtractArray';
 import { parseDate } from '../../util/parseDate';
+import TrailerVideoPlayer from '../TrailerVideo/TrailerVideoPlayer';
 
 import 'react-lazy-load-image-component/src/effects/opacity.css';
 
@@ -30,6 +31,7 @@ const baseURL = 'https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/';
 const posterBaseURL = 'https://image.tmdb.org/t/p/w500/';
 
 const MovieDetails = ({ details, children }) => {
+  const [showTrailer, setShowTrailer] = useState(false);
   const {
     backdrop_path: backdrop,
     poster_path: imageURL,
@@ -37,6 +39,7 @@ const MovieDetails = ({ details, children }) => {
     spoken_languages: lang,
     imdb_id: imdbID,
     production_countries: countries,
+    videos,
     runtime,
     overview,
     title,
@@ -44,8 +47,17 @@ const MovieDetails = ({ details, children }) => {
     homepage,
   } = details;
 
+  const openTrailer = () => setShowTrailer(true);
+
+  const closeTrailer = () => setShowTrailer(false);
+
   return (
     <DetailsWrapper>
+      <TrailerVideoPlayer
+        showTrailer={showTrailer}
+        closeTrailer={closeTrailer}
+        videos={videos}
+      />
       <Backdrop>
         <GradientTransition />
         <LazyLoadImage
@@ -76,6 +88,7 @@ const MovieDetails = ({ details, children }) => {
               <Details>
                 <Title>{title}</Title>
                 <Overview>{overview}</Overview>
+                <button onClick={openTrailer}>Show Trailer</button>
 
                 <SubSection>
                   <SubTitle>Genres</SubTitle>
