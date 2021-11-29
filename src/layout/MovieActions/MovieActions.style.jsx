@@ -3,6 +3,7 @@ import tw, { styled } from 'twin.macro';
 export const ActionsWrapper = styled.div`
   ${tw`
     flex
+    flex-wrap
     mb-5
     gap-3
   `}
@@ -57,9 +58,11 @@ export const PlayAction = styled.button`
   ${tw`
     flex
     items-center
-    bg-accent 
-    pl-3 
-    pr-5
+    bg-accent
+    pr-4
+    pl-1 
+    sm:pl-3 
+    sm:pr-5
     rounded-full
     mb-5
   `}
@@ -72,7 +75,8 @@ export const PlayAction = styled.button`
 export const Text = styled.p`
   ${tw`
     font-primary
-    text-lg
+    text-base
+    sm:text-lg
     font-semibold
   `}
 `;
