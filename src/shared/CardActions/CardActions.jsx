@@ -93,8 +93,8 @@ const CardActions = ({ details }) => {
     // Check if shelf exist
     const local = localStorage.getItem('shelf');
     const localObject = JSON.parse(local);
-    const watchlist = localObject.watchlist;
-    const favorites = localObject.favorites;
+    const watchlist = localObject ? localObject.watchlist : [];
+    const favorites = localObject ? localObject.favorites : [];
 
     // // check if item already exist
     const isWatchlist = watchlist.find((i) => i.id === details.id);

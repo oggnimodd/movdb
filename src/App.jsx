@@ -10,17 +10,6 @@ import CustomToast from './shared/CustomToast/CustomToast';
 import ListProvider from './hooks/useShelf';
 
 const App = () => {
-  // Create Localstorage
-  useEffect(() => {
-    const local = localStorage.getItem('shelf');
-    if(!local) {
-      localStorage.setItem('shelf', JSON.stringify({
-        favorites: [],
-        watchlist: [],
-      }));
-    }
-  }, []);
-
   return (
     <SideNavbarProvider>
       <CustomToast />

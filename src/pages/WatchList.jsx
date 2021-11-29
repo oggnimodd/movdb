@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
 import MovieList from '../layout/MovieList/MovieList';
-import Fallback from '../shared/Fallback';
-import useShelf, { ListContext } from '../hooks/useShelf';
+import { ListContext } from '../hooks/useShelf';
+import useInitShelf from '../hooks/useInitShelf';
 
 const WatchList = () => {
+  useInitShelf();
+
   const { list } = useContext(ListContext) || {};
-  const { watchlist } = list || list;
+  const { watchlist } = list || {};
 
   return (
     <>
