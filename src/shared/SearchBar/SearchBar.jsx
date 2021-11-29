@@ -16,6 +16,7 @@ const SearchBar = ({ sideNavbar }) => {
 
     history.push(`/search?query=${value}`);
     searchRef.current.value = '';
+    searchRef.current.blur();
     close();
   };
 
