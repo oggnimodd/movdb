@@ -16,7 +16,13 @@ import {
   NoImage,
 } from './MovieDetails.style';
 import 'twin.macro';
-import { RenderGenres } from './ExtractArray';
+import {
+  RenderGenres,
+  RenderLanguages,
+  RenderLinks,
+  RenderCountries,
+} from './ExtractArray';
+import { parseDate } from '../../util/parseDate';
 
 import 'react-lazy-load-image-component/src/effects/opacity.css';
 
@@ -28,9 +34,14 @@ const MovieDetails = ({ details, children }) => {
     backdrop_path: backdrop,
     poster_path: imageURL,
     release_date: date,
+    spoken_languages: lang,
+    imdb_id: imdbID,
+    production_countries: countries,
+    runtime,
     overview,
     title,
     genres,
+    homepage,
   } = details;
 
   return (
@@ -65,30 +76,43 @@ const MovieDetails = ({ details, children }) => {
               <Details>
                 <Title>{title}</Title>
                 <Overview>{overview}</Overview>
+
                 <SubSection>
                   <SubTitle>Genres</SubTitle>
                   <RenderGenres genres={genres} />
                 </SubSection>
-                <SubSection>
-                  <SubTitle>Production Countries</SubTitle>
-                </SubSection>
+
                 <SubSection>
                   <SubTitle>Runtime</SubTitle>
-                  <SubInfo>93 min</SubInfo>
+                  <SubInfo>{runtime ? `${runtime} min` : null} </SubInfo>
                 </SubSection>
+
                 <SubSection>
                   <SubTitle>Spoken Language(s)</SubTitle>
+                  <RenderLanguages languages={lang} />
                 </SubSection>
+
                 <SubSection>
                   <SubTitle>Movie Status</SubTitle>
                   <SubInfo>Released</SubInfo>
                 </SubSection>
+
                 <SubSection>
                   <SubTitle>Release Date</SubTitle>
-                  <SubInfo>20 januari 2020</SubInfo>
+                  <SubInfo>{date && parseDate(date)}</SubInfo>
                 </SubSection>
+
+                <SubSection>
+                  <SubTitle>Production Countries</SubTitle>
+                  <RenderCountries countries={countries} />
+                </SubSection>
+
                 <SubSection>
                   <SubTitle>Links</SubTitle>
+                  <RenderLinks
+                    homepage={homepage}
+                    imdbID={imdbID}
+                  />
                 </SubSection>
 
               </Details>

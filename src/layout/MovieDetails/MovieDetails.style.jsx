@@ -10,6 +10,7 @@ export const DetailsWrapper = styled.div`
 
 export const StyledContainer = styled(Container)`
   ${tw`
+    w-full
     absolute
     top-0
     left-0
@@ -40,7 +41,7 @@ export const Backdrop = styled.div`
     overflow-hidden
   `}
 
-  min-height: 300px;
+  min-height: 48vh;
   aspect-ratio: 1 / 1.2;
 
   @media screen and (min-width:${breakpoints.sm}px){
@@ -68,7 +69,8 @@ export const Content = styled.div`
   ${tw`
     rounded-lg 
     bg-primary
-    mt-60
+    mt-20
+    md:mt-32
     px-[15px]
     py-20
     relative
@@ -84,6 +86,8 @@ export const ImageWrapper = styled.div`
     lg:pr-5
     w-full
     relative
+    mb-12
+    lg:mb-0
   `}
 
   aspect-ratio: 500/750;
@@ -127,9 +131,10 @@ export const Details = styled.div`
 export const Title = styled.h2`
   ${tw`
     font-primary
-    text-5xl
-    font-semibold
-    mb-5
+    text-3xl
+    md:text-4xl
+    font-bold
+    mb-2
   `}
 `;
 
@@ -137,6 +142,7 @@ export const Overview = styled.p`
   ${tw`
     font-secondary
     select-none
+    mb-5
   `}
 
   line-height: 1.8;
@@ -144,7 +150,7 @@ export const Overview = styled.p`
 
 export const SubSection = styled.div`
   ${tw`
-    mb-4
+    mb-5
   `}
 `;
 
@@ -163,30 +169,46 @@ export const SubInfo = styled.p`
   ${tw`
     text-white 
     font-secondary 
-    text-sm
+    text-base
   `}
 `;
 
-export const Genres = styled.div`
+export const ListFlex = styled.div`
   ${tw`
     flex
     flex-wrap
+    gap-y-2
+    gap-x-16
   `}
 `;
 
-export const GenreItem = styled.span`
+export const RenderItem = styled.span`
+  ${tw`
+    text-base
+  `}
+
   a{
     ${tw`
       text-white
-      inline-flex
+      flex
       items-center
       justify-center
-      mr-10
     `}
   }
+`;
 
+export const GenreItem = styled(RenderItem)`
   svg{
     font-size: 22px;
     margin-right: 5px;
+  }
+`;
+
+export const CountryItem = styled(RenderItem)`
+ img{
+   ${tw`
+      inline-block
+      mr-2
+    `}
   }
 `;
