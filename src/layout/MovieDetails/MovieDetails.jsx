@@ -24,6 +24,7 @@ import {
 } from './ExtractArray';
 import { parseDate } from '../../util/parseDate';
 import TrailerVideoPlayer from '../TrailerVideo/TrailerVideoPlayer';
+import MovieActions from '../MovieActions/MovieActions';
 
 import 'react-lazy-load-image-component/src/effects/opacity.css';
 
@@ -87,8 +88,11 @@ const MovieDetails = ({ details, children }) => {
             <div tw="w-full lg:w-8/12">
               <Details>
                 <Title>{title}</Title>
+                <MovieActions
+                  details={details}
+                  openTrailer={openTrailer}
+                />
                 <Overview>{overview}</Overview>
-                <button onClick={openTrailer}>Show Trailer</button>
 
                 <SubSection>
                   <SubTitle>Genres</SubTitle>

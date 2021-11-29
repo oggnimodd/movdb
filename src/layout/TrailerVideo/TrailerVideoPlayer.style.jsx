@@ -1,4 +1,5 @@
 import tw, { styled } from 'twin.macro';
+import { keyframes } from 'styled-components';
 import { colors } from '../../constants/colors';
 
 export const VideoPlayerWrapper = styled.div`
@@ -11,6 +12,16 @@ export const VideoPlayerWrapper = styled.div`
   `}
 
   z-index: 9999;
+`;
+
+const fadeIn = keyframes`
+    0% {
+      opacity: 0
+    }
+    
+    100% {
+      opacity: 1
+    }
 `;
 
 export const FrameWrapper = styled.div`
@@ -28,6 +39,8 @@ export const FrameWrapper = styled.div`
     position: relative;
     height: 100%;
     overflow: hidden;
+    background: #666363;
+    animation: ${fadeIn} ease-in-out 200ms;
 
     ${tw`
       w-11/12
