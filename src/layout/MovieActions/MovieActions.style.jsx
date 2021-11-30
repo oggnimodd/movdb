@@ -5,7 +5,8 @@ export const ActionsWrapper = styled.div`
     flex
     flex-wrap
     mb-5
-    gap-3
+    gap-x-3
+    gap-y-4
   `}
 
   /* Disable Tooltip On Small Screen */
@@ -74,7 +75,6 @@ export const PlayAction = styled.button`
     sm:pl-3 
     sm:pr-5
     rounded-full
-    mb-5
   `}
 
   &:hover{
