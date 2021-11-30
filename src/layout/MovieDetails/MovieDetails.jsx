@@ -1,31 +1,36 @@
 import React, { useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+
+import 'twin.macro';
+
+import { parseDate } from '../../util/parseDate';
+import TrailerVideoPlayer from '../TrailerVideo/TrailerVideoPlayer';
+import MovieActions from '../MovieActions/MovieActions';
+import DetailsCast from '../DetailsCast/DetailsCast';
+import { Container } from '../../shared/Flexi';
+
+import {
+  ImageWrapper,
+  Title,
+  SubSection,
+  SubTitle,
+  SubInfo,
+  Description,
+} from '../../shared/Details';
+import {
+  RenderGenres,
+  RenderLanguages,
+  RenderLinks,
+  RenderCountries,
+} from '../../shared/ExtractList';
 import {
   DetailsWrapper,
   Backdrop,
   GradientTransition,
   Content,
   StyledContainer,
-  ImageWrapper,
-  Details,
-  Title,
-  Overview,
-  SubSection,
-  SubTitle,
-  SubInfo,
   NoImage,
 } from './MovieDetails.style';
-import 'twin.macro';
-import {
-  RenderGenres,
-  RenderLanguages,
-  RenderLinks,
-  RenderCountries,
-} from './ExtractArray';
-import { parseDate } from '../../util/parseDate';
-import TrailerVideoPlayer from '../TrailerVideo/TrailerVideoPlayer';
-import MovieActions from '../MovieActions/MovieActions';
-import DetailsCast from '../DetailsCast/DetailsCast';
 
 import 'react-lazy-load-image-component/src/effects/opacity.css';
 
@@ -96,7 +101,7 @@ const MovieDetails = ({ details, children }) => {
             </div>
             {/* Content */}
             <div tw="w-full lg:w-8/12">
-              <Details>
+              <Container tw="px-0 sm:px-[15px]">
                 <MovieActions
                   details={details}
                   video={video}
@@ -106,7 +111,7 @@ const MovieDetails = ({ details, children }) => {
 
                 <Title>{title}</Title>
 
-                <Overview>{overview}</Overview>
+                <Description>{overview}</Description>
 
                 <SubSection>
                   <SubTitle>Genres</SubTitle>
@@ -143,10 +148,11 @@ const MovieDetails = ({ details, children }) => {
                   <RenderLinks
                     homepage={homepage}
                     imdbID={imdbID}
+                    domain="title"
                   />
                 </SubSection>
 
-              </Details>
+              </Container>
             </div>
           </div>
           <DetailsCast cast={credits.cast} />

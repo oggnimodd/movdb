@@ -81,34 +81,6 @@ export const Content = styled.div`
   border: 1px solid rgba(21, 31, 48, 0.31);
 `;
 
-export const ImageWrapper = styled.div`
-  ${tw`
-    lg:pr-5
-    w-full
-    relative
-    mb-12
-    lg:mb-0
-  `}
-
-  aspect-ratio: 500/750;
-
-  span {
-    width: 100%;
-  }
-
-  img{
-    ${tw`
-      inline-block
-      w-full
-      object-center
-      object-cover
-      rounded-2xl
-    `}
-
-  box-shadow: rgba(7, 7, 7, 0.322) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-  }
-`;
-
 const placeholderImage = new URL('../../assets/placeholder.svg', import.meta.url).href;
 export const NoImage = styled.div`
   ${tw`
@@ -117,60 +89,8 @@ export const NoImage = styled.div`
     bg-no-repeat
     bg-center
   `}
-
   background-image: url(${placeholderImage});
   background-color: #DBDBDB;
-`;
-
-export const Details = styled.div`
-  ${tw`
-    sm:px-6
-  `}
-`;
-
-export const Title = styled.h2`
-  ${tw`
-    font-primary
-    text-3xl
-    md:text-4xl
-    font-bold
-    mb-2
-  `}
-`;
-
-export const Overview = styled.p`
-  ${tw`
-    font-secondary
-    select-none
-    mb-5
-  `}
-
-  line-height: 1.8;
-`;
-
-export const SubSection = styled.div`
-  ${tw`
-    mb-5
-  `}
-`;
-
-export const SubTitle = styled.h3`
-  ${tw` 
-    font-primary 
-    text-white
-    text-lg
-    text-accent
-    font-semibold
-    mb-1
-  `}
-`;
-
-export const SubInfo = styled.p`
-  ${tw`
-    text-white 
-    font-secondary 
-    text-base
-  `}
 `;
 
 export const ListFlex = styled.div`

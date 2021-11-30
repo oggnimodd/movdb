@@ -7,7 +7,7 @@ import {
   GenreItem,
   RenderItem,
   CountryItem,
-} from './MovieDetails.style';
+} from './Details';
 
 export const RenderGenres = ({ genres }) => {
   return (
@@ -44,9 +44,9 @@ export const RenderLanguages = ({ languages }) => {
   );
 };
 
-const imdbURL = 'https://www.imdb.com/title/';
+const imdbURL = 'https://www.imdb.com/';
 
-export const RenderLinks = ({ homepage, imdbID }) => {
+export const RenderLinks = ({ homepage, imdbID, domain }) => {
   const links = [
     {
       id: `website${homepage}`,
@@ -57,7 +57,7 @@ export const RenderLinks = ({ homepage, imdbID }) => {
     {
       id: `imdb-${imdbID}`,
       name: 'IMDb',
-      link: imdbURL + imdbID,
+      link: `${imdbURL + domain}/${imdbID}`,
       valid: imdbID,
     },
   ];

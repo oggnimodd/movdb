@@ -5,7 +5,7 @@ import {
 import Fallback from './shared/Fallback';
 
 const Home = lazy(() => import('./pages/Home'));
-const Cast = lazy(() => import('./pages/Cast'));
+const Person = lazy(() => import('./pages/Person'));
 const Favorites = lazy(() => import('./pages/Favorites'));
 const Movie = lazy(() => import('./pages/Movie'));
 const NotFound = lazy(() => import('./pages/NotFound'));
@@ -26,7 +26,7 @@ const Routes = () => {
 
         <Route exact path="/genre/:genreID" component={MoviesInGenre} />
         <Route exact path="/movie/:movieID" component={Movie} />
-        <Route exact path="/cast/castID" component={Cast} />
+        <Route exact path="/person/:personID" component={Person} />
 
         <Route exact path="/search" component={SearchResults} />
 

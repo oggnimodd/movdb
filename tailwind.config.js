@@ -25,6 +25,10 @@ module.exports = {
         accent,
         primary,
       },
+      container: {
+        paddingRight: '0.9375rem',
+        paddingLeft: '0.9375rem',
+      },
     },
   },
   plugins: [],
