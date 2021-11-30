@@ -51,7 +51,7 @@ const MovieDetails = ({ details, children }) => {
     genres,
     homepage,
     credits,
-  } = details;
+  } = details || {};
 
   const openTrailer = () => setShowTrailer(true);
 

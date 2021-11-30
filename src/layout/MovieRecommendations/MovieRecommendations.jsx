@@ -22,10 +22,6 @@ const MovieRecommendations = ({ details, withPadding }) => {
   const list = details?.recommendations?.results || null;
   const history = useHistory();
 
-  if(!list) {
-    history.push('/404');
-  }
-
   if(withPadding) {
     return (
       <RecommendationWrapper tw="sm:px-[15px]">

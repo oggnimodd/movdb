@@ -72,8 +72,12 @@ const useMovies = (type) => {
         // call movie api here
         const res = await fetch(url);
         const json = await res.json();
-        setMovies(json);
-        setError(false);
+        if(res.ok) {
+          setMovies(json);
+          setError(false);
+        }else{
+          setError(true);
+        }
         setLoading(false);
       } catch (error) {
         setError(error);

@@ -7,7 +7,6 @@ import { combineArrays } from '../util/combineArrays';
 
 const Person = () => {
   const { details, loading, error } = usePerson();
-  const { cast, crew } = details?.movie_credits || {};
 
   if(loading) {
     return <Fallback />;
@@ -20,6 +19,8 @@ const Person = () => {
   if(!details) {
     return null;
   }
+
+  const { cast, crew } = details?.movie_credits || {};
 
   const credits = combineArrays([cast, crew], true);
 

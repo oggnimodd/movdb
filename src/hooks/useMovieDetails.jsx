@@ -29,8 +29,12 @@ const useMovieDetails = () => {
         const res = await fetch(url);
         const json = await res.json();
 
-        setDetails(json);
-        setError(false);
+        if(!res.ok) {
+          setError(true);
+        }else{
+          setDetails(json);
+          setError(false);
+        }
         setLoading(false);
       } catch (error) {
         setError(error);
