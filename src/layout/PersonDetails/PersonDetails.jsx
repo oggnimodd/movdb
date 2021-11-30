@@ -77,7 +77,9 @@ const PersonDetails = ({ details }) => {
           <Description>
             <SubTitle>Biography</SubTitle>
             <div tw="sm:pr-10 relative">
-              {bio}
+              <p>
+                {bio}
+              </p>
               {
                 hide
                 && (

@@ -46,7 +46,11 @@ export const Description = styled.div`
   `}
 
   line-height: 1.8;
-  white-space: pre-line
+  white-space: pre-line;
+
+  p{
+    word-break: break-all; 
+  }
 `;
 
 export const SubSection = styled.div`
