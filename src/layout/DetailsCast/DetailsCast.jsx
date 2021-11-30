@@ -1,7 +1,8 @@
 import React from 'react';
+import { FaArrowRight as Arrow } from 'react-icons/fa';
 import { Scrollbars } from 'react-custom-scrollbars-2';
 import CastCardScroll from '../CastCardScroll/CastCardScroll';
-import { Col, Container } from '../../shared/Flexi';
+import { Col } from '../../shared/Flexi';
 import 'twin.macro';
 import {
   CastWrapper,
@@ -69,11 +70,13 @@ const DetailsCast = ({ cast }) => {
           <Col>
             <ViewMore>
               View More
+              <Arrow />
             </ViewMore>
           </Col>
         </Scrollbars>
         <CastWrapperFooter>
           See Full Cast And Crew
+          <Arrow />
         </CastWrapperFooter>
       </ScrollableWrapper>
     </CastWrapper>

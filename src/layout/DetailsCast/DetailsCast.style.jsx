@@ -44,16 +44,32 @@ export const ViewMore = styled.div`
     justify-center 
     h-full 
     font-primary 
-    font-bold
+    font-bold 
   `}
   width: 180px;
+
+  svg {
+    ${tw`
+      ml-2
+      text-sm
+    `}
+  }
 `;
 
 export const CastWrapperFooter = styled.p`
-  ${tw`
+  ${tw` 
     mt-4
     md:mt-6
     font-primary 
-    font-bold 
+    font-bold  
+    flex 
+    items-center
   `}
+
+  svg {
+    ${tw`
+      ml-2
+      text-sm
+    `}
+  }
 `;
