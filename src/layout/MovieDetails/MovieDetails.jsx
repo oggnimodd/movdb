@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-
 import 'twin.macro';
-
 import { parseDate } from '../../util/parseDate';
 import TrailerVideoPlayer from '../TrailerVideo/TrailerVideoPlayer';
 import MovieActions from '../MovieActions/MovieActions';
@@ -16,6 +14,11 @@ import {
   SubTitle,
   SubInfo,
   Description,
+  DetailsWrapper,
+  Backdrop,
+  GradientTransition,
+  Content,
+  StyledContainer,
 } from '../../shared/Details';
 import {
   RenderGenres,
@@ -24,11 +27,6 @@ import {
   RenderCountries,
 } from '../../shared/ExtractList';
 import {
-  DetailsWrapper,
-  Backdrop,
-  GradientTransition,
-  Content,
-  StyledContainer,
   NoImage,
 } from './MovieDetails.style';
 
@@ -155,7 +153,10 @@ const MovieDetails = ({ details, children }) => {
               </Container>
             </div>
           </div>
-          <DetailsCast cast={credits.cast} />
+          <DetailsCast
+            id={details.id}
+            cast={credits.cast}
+          />
         </Content>
         {children}
       </StyledContainer>

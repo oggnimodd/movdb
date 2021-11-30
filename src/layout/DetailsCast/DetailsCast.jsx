@@ -4,6 +4,7 @@ import { Scrollbars } from 'react-custom-scrollbars-2';
 import CastCardScroll from '../CastCardScroll/CastCardScroll';
 import { Col } from '../../shared/Flexi';
 import 'twin.macro';
+import Link from '../../shared/Link';
 import {
   CastWrapper,
   CastWrapperHeader,
@@ -26,7 +27,7 @@ const View = (props) => {
   );
 };
 
-const DetailsCast = ({ cast }) => {
+const DetailsCast = ({ cast, id }) => {
   // Slice and filter cast ("Acting" and Max 10 length)
   const shownCast = cast.slice(0, 10);
 
@@ -69,14 +70,18 @@ const DetailsCast = ({ cast }) => {
           }
           <Col>
             <ViewMore>
-              View More
-              <Arrow />
+              <Link to={`/movie/${id}/cast`}>
+                View More
+                <Arrow />
+              </Link>
             </ViewMore>
           </Col>
         </Scrollbars>
         <CastWrapperFooter>
-          See Full Cast And Crew
-          <Arrow />
+          <Link to={`/movie/${id}/cast`}>
+            See Full Cast And Crew
+            <Arrow />
+          </Link>
         </CastWrapperFooter>
       </ScrollableWrapper>
     </CastWrapper>

@@ -3,7 +3,6 @@ import useMovieDetails from '../hooks/useMovieDetails';
 import Fallback from '../shared/Fallback';
 import MovieDetails from '../layout/MovieDetails/MovieDetails';
 import MovieRecommendations from '../layout/MovieRecommendations/MovieRecommendations';
-import { Container } from '../shared/Flexi';
 
 const Movie = () => {
   const { details, error, loading } = useMovieDetails();

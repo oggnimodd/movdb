@@ -3,9 +3,11 @@ import usePerson from '../hooks/usePerson';
 import Fallback from '../shared/Fallback';
 import MovieCredits from '../layout/MovieCredits/MovieCredits';
 import PersonDetails from '../layout/PersonDetails/PersonDetails';
+import { combineArrays } from '../util/combineArrays';
 
 const Person = () => {
   const { details, loading, error } = usePerson();
+  const { cast, crew } = details?.movie_credits || {};
 
   if(loading) {
     return <Fallback />;
@@ -19,10 +21,12 @@ const Person = () => {
     return null;
   }
 
+  const credits = combineArrays([cast, crew], true);
+
   return (
     <>
       <PersonDetails details={details} />
-      <MovieCredits cast={details.movie_credits.cast} />
+      <MovieCredits credits={credits} />
     </>
   );
 };

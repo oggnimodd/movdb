@@ -3,8 +3,8 @@ import MovieList from '../MovieList/MovieList';
 import { CreditsTitle } from './MovieCredits.style';
 import { Container } from '../../shared/Flexi';
 
-const MovieCredits = ({ cast }) => {
-  if(!cast || cast.lenght === 0) {
+const MovieCredits = ({ credits }) => {
+  if(!credits || credits.length === 0) {
     return null;
   }
 
@@ -15,7 +15,7 @@ const MovieCredits = ({ cast }) => {
           Movie Credits
         </CreditsTitle>
       </Container>
-      <MovieList movies={cast} />
+      <MovieList movies={credits} />
     </>
   );
 };

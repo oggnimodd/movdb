@@ -15,7 +15,7 @@ const MovieList = ({ movies }) => {
             movies && movies.map((item) => {
               return (
                 <MovieCard
-                  key={item.id}
+                  key={item.id + Math.random()}
                   movieDetails={item}
                 />
               );
