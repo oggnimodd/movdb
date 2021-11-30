@@ -81,18 +81,6 @@ export const Content = styled.div`
   border: 1px solid rgba(21, 31, 48, 0.31);
 `;
 
-const placeholderImage = new URL('../../assets/placeholder.svg', import.meta.url).href;
-export const NoImage = styled.div`
-  ${tw`
-    w-full
-    h-full
-    bg-no-repeat
-    bg-center
-  `}
-  background-image: url(${placeholderImage});
-  background-color: #DBDBDB;
-`;
-
 export const ImageWrapper = styled.div`
 ${tw`
   lg:pl-5
