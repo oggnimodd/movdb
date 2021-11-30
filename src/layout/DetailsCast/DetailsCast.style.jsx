@@ -32,6 +32,10 @@ export const StyledView = styled.div`
     gap-6
   `}
 
+  /* Hide default scrollbar and use plugin */
+  scrollbar-width: none; /* Firefox 64 */
+  -ms-overflow-style: none; /* IE 11 */
+
   ::-webkit-scrollbar{
     display: none;
   }
