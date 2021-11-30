@@ -46,10 +46,10 @@ export const Description = styled.div`
   `}
 
   line-height: 1.8;
-  white-space: pre-line;
+  white-space: pre-wrap;
 
   p{
-    word-break: break-all; 
+    ${tw`break-words`}
   }
 `;
 
