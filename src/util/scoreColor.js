@@ -7,6 +7,8 @@ export const colors = {
 };
 
 export const scoreColors = (score) => {
+  score = score.toFixed(1);
+
   if(score === 0) {
     return colors.mid;
   }

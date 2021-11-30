@@ -35,6 +35,18 @@ export const ActionButton = styled.button`
   font-size: ${({ fz }) => fz || 20}px;
 `;
 
+export const Score = styled(ActionButton)`
+  ${tw`
+    font-primary
+    text-primary
+    font-bold
+    text-base
+    hover:text-white
+  `}
+
+  background-color: ${(props) => props.bg};
+`;
+
 export const PlayButton = styled.span`
   ${tw`
     bg-transparent
@@ -43,15 +55,13 @@ export const PlayButton = styled.span`
     flex
     items-center
     justify-center
-    bg-accent
+    bg-none
   `}
-  &:hover{
-    background: #417ec4;
-  }
 
   width: 40px;
   height: 40px;
   font-size: ${({ fz }) => fz || 20}px;
+  opacity: 0.96;
 `;
 
 export const PlayAction = styled.button`

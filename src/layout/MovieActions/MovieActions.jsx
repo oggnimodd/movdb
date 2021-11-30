@@ -6,6 +6,7 @@ import ReactTooltip from 'react-tooltip';
 import { toast } from 'react-toastify';
 import { colors } from '../../constants/colors';
 import useMovieActions, { ToastMessage } from '../../hooks/useMovieActions';
+import { scoreColors } from '../../util/scoreColor';
 
 import {
   ActionsWrapper,
@@ -14,6 +15,7 @@ import {
   PlayAction,
   Text,
   StyledTooltip,
+  Score,
 } from './MovieActions.style';
 
 const Tooltip = ({ id, msg }) => {
@@ -31,6 +33,8 @@ const Tooltip = ({ id, msg }) => {
 
 const MovieActions = ({ details, openTrailer, video }) => {
   const { inFavorite, inWatchlist, toggleAction } = useMovieActions(details);
+  const { vote_average: point } = details;
+  const scoreBg = scoreColors(point);
 
   const copyLink = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -55,6 +59,12 @@ const MovieActions = ({ details, openTrailer, video }) => {
         </PlayAction>
         )
       }
+
+      <Score
+        bg={scoreBg}
+      >
+        {point !== 0 ? point.toFixed(1) : 'NR'}
+      </Score>
 
       <a
         data-tip
