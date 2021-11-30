@@ -78,6 +78,7 @@ const MovieDetails = ({ details, children }) => {
       <StyledContainer>
         <Content>
           <div tw="flex lg:flex-row-reverse flex-row flex-wrap">
+            {/* Image */}
             <div tw="w-full lg:w-4/12">
               <ImageWrapper>
                 {
@@ -93,6 +94,7 @@ const MovieDetails = ({ details, children }) => {
                 }
               </ImageWrapper>
             </div>
+            {/* Content */}
             <div tw="w-full lg:w-8/12">
               <Details>
                 <MovieActions
