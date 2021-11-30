@@ -25,6 +25,7 @@ import {
 import { parseDate } from '../../util/parseDate';
 import TrailerVideoPlayer from '../TrailerVideo/TrailerVideoPlayer';
 import MovieActions from '../MovieActions/MovieActions';
+import DetailsCast from '../DetailsCast/DetailsCast';
 
 import 'react-lazy-load-image-component/src/effects/opacity.css';
 
@@ -46,13 +47,18 @@ const MovieDetails = ({ details, children }) => {
     title,
     genres,
     homepage,
+    credits,
   } = details;
 
   const openTrailer = () => setShowTrailer(true);
 
   const closeTrailer = () => setShowTrailer(false);
 
-  const video = videos.results.filter((i) => i.type === 'Trailer')[0];
+  // MOVE THIS TO A FUNCTION
+  let video = videos.results.filter((i) => i.type === 'Trailer')[0];
+  if(!video) {
+    video = videos.results[0];
+  }
 
   return (
     <DetailsWrapper>
@@ -71,7 +77,7 @@ const MovieDetails = ({ details, children }) => {
       </Backdrop>
       <StyledContainer>
         <Content>
-          <div tw="flex flex-wrap">
+          <div tw="flex lg:flex-row-reverse flex-row flex-wrap">
             <div tw="w-full lg:w-4/12">
               <ImageWrapper>
                 {
@@ -141,6 +147,7 @@ const MovieDetails = ({ details, children }) => {
               </Details>
             </div>
           </div>
+          <DetailsCast cast={credits.cast} />
         </Content>
         {children}
       </StyledContainer>

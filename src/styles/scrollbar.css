@@ -3,6 +3,7 @@
   background: linear-gradient(to bottom, #0472b3, #09305e, #c5c8e0);
   width: 0.4rem;
   z-index: 9999;
+  cursor: pointer;
 }
 
 .track-vertical-body{
@@ -12,4 +13,13 @@
   top:0;
   height: 100%;
   z-index: 9999;
+  cursor: pointer;
+}
+
+.custom-scrollbar-horizontal {
+  border-radius: 5px;
+  background: linear-gradient(to right, #0472b3, #09305e, #c5c8e0);
+  width: 0.6rem;
+  z-index: 9999;
+  cursor: pointer;
 }

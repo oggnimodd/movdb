@@ -52,11 +52,13 @@ export const RenderLinks = ({ homepage, imdbID }) => {
       id: `website${homepage}`,
       name: 'Website',
       link: homepage,
+      valid: homepage,
     },
     {
       id: `imdb-${imdbID}`,
       name: 'IMDb',
       link: imdbURL + imdbID,
+      valid: imdbID,
     },
   ];
 
@@ -64,7 +66,7 @@ export const RenderLinks = ({ homepage, imdbID }) => {
     <ListFlex>
       {
         links && links.map((i) => {
-          if (!i.link) return null;
+          if (!i.valid) return null;
 
           return (
             <GenreItem key={i.id}>
