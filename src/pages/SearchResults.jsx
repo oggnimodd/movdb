@@ -3,7 +3,7 @@ import React from 'react';
 import MovieList from '../layout/MovieList/MovieList';
 import Fallback from '../shared/Fallback';
 import useMovies from '../hooks/useMovies';
-import { Button } from './Home';
+import Pagination from '../layout/Pagination/Pagination';
 
 const SearchResults = () => {
   // get movie list here and pass to children
@@ -20,19 +20,19 @@ const SearchResults = () => {
 
   const { results, total_pages } = movies || {};
 
+  if(!movies) {
+    return null;
+  }
+
   return (
     <>
       {/* List header (description), ex => Popular Movies -------- page 1 of 500 */}
-      <Button total={total_pages}>
-        next
-      </Button>
-
-      {/* filter */}
 
       {/* movie list */}
       <MovieList movies={results} />
 
       {/* pagination */}
+      <Pagination total={total_pages} />
     </>
   );
 };

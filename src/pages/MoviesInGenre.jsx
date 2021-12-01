@@ -4,7 +4,7 @@ import MovieList from '../layout/MovieList/MovieList';
 import useMovies from '../hooks/useMovies';
 import Fallback from '../shared/Fallback';
 import Filter from '../layout/Filter/Filter';
-import { Button } from './Home';
+import Pagination from '../layout/Pagination/Pagination';
 
 const MoviesInGenre = () => {
   const {
@@ -25,9 +25,6 @@ const MoviesInGenre = () => {
   return (
     <>
       {/* List header (description), ex => Popular Movies -------- page 1 of 500 */}
-      <Button total={total_pages}>
-        next
-      </Button>
 
       {/* filter */}
       <Filter
@@ -39,6 +36,7 @@ const MoviesInGenre = () => {
       <MovieList movies={results} />
 
       {/* pagination */}
+      <Pagination total={total_pages} />
     </>
   );
 };

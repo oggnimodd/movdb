@@ -49,7 +49,6 @@ const createURL = (type, page, params, search, filter) => {
 const defaultFilter = 'popularity.desc';
 
 const useMovies = (type) => {
-  const history = useHistory();
   const [filter, changeFilter] = useState(defaultFilter);
 
   // need location to get query and page
@@ -86,6 +85,8 @@ const useMovies = (type) => {
     setLoading(true);
     getMovies();
   }, [location, filter]);
+
+  console.log(loading);
 
   return {
     movies, error, loading, filter, changeFilter,

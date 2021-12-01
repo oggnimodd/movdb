@@ -8,10 +8,12 @@ export const Wrapper = styled.div`
     w-full 
     flex 
     items-center 
-    justify-center
+    justify-center 
+    bg-primary
   `}
 
   height: calc(100vh - 100px);
+  z-index: 9999;
 `;
 
 const Fallback = () => {
