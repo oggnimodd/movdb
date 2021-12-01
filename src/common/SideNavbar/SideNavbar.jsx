@@ -1,5 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import { MdOutlineMovieFilter } from 'react-icons/md';
+import { AiOutlineStar, AiOutlineHeart } from 'react-icons/ai';
+import { FiBarChart2 } from 'react-icons/fi';
+import { BsCalendar3, BsBookmark } from 'react-icons/bs';
 import { Scrollbars } from 'react-custom-scrollbars-2';
 import Link from '../../shared/Link';
 import {
@@ -65,9 +68,9 @@ const SideNavbar = () => {
               <SubSectionHeader>
                 DISCOVER
               </SubSectionHeader>
-              <NavLink to="/discover/popular"><MdOutlineMovieFilter />Popular</NavLink>
-              <NavLink to="/discover/top-rated"><MdOutlineMovieFilter />Top Rated</NavLink>
-              <NavLink to="/discover/upcoming"><MdOutlineMovieFilter />Upcoming</NavLink>
+              <NavLink to="/discover/popular"><AiOutlineStar />Popular</NavLink>
+              <NavLink to="/discover/top-rated"><FiBarChart2 />Top Rated</NavLink>
+              <NavLink to="/discover/upcoming"><BsCalendar3 />Upcoming</NavLink>
             </SubSection>
 
             <SubSection>
@@ -75,11 +78,11 @@ const SideNavbar = () => {
                 SHELF
               </SubSectionHeader>
               <NavLink to="/favorites">
-                <MdOutlineMovieFilter />
+                <AiOutlineHeart />
                 Favorites
               </NavLink>
               <NavLink to="/watch-list">
-                <MdOutlineMovieFilter />Watchlist
+                <BsBookmark />Watchlist
               </NavLink>
             </SubSection>
 
