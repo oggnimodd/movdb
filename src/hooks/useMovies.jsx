@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import React, { useState, useEffect } from 'react';
 import { useLocation, useParams, useHistory } from 'react-router-dom';
 import queryString from 'query-string';
@@ -20,6 +21,12 @@ const createURL = (type, page, params, search, filter) => {
   let url;
   let pageTitle;
   query.page = page || 1;
+
+  // validate page type
+  const parsePage = parseInt(query.page, 10);
+  if(isNaN(parsePage)) {
+    return {};
+  }
 
   if(type === 'discover') {
     let { discoverID } = params;
