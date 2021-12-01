@@ -16,7 +16,7 @@ const Header = ({
           {
             shelf
               ? <p>Total Movies : {total} </p>
-              : <p>Page {page} of {total} </p>
+              : total > 0 && <p>Page {page} of {total} </p>
           }
         </PageCount>
 
