@@ -38,7 +38,7 @@ export const MenuIcon = styled.button`
   `}
 `;
 
-export const ToggleThemeButton = styled.button`
+export const BackButton = styled.button`
   ${tw`
     rounded-full
     bg-accent
@@ -46,6 +46,15 @@ export const ToggleThemeButton = styled.button`
     px-4 
     py-2 
     hidden
-    sm:block
+    font-primary 
+    font-semibold 
+    sm:flex  
+    items-center
   `}
+
+  span {
+    ${tw`
+      ml-2
+    `}
+  }
 `;

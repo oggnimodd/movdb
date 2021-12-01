@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { BiSearch } from 'react-icons/bi';
 import { AiOutlineMenu } from 'react-icons/ai';
+import { useHistory } from 'react-router-dom';
+import { FaArrowLeft } from 'react-icons/fa';
 import { Container } from '../../shared/Flexi';
 import {
-  NavbarWrapper, Nav, NavBrand, MenuIcon, ToggleThemeButton,
+  NavbarWrapper, Nav, NavBrand, MenuIcon, BackButton,
 } from './Navbar.style';
 import Brand from '../../shared/Brand/Brand';
 import Link from '../../shared/Link';
@@ -12,6 +14,11 @@ import SearchBar from '../../shared/SearchBar/SearchBar';
 
 const Navbar = () => {
   const { toggle } = useContext(SideNavbarContext);
+  const history = useHistory();
+
+  const goToPrevPage = () => {
+    if (history.action !== 'POP') history.goBack();
+  };
 
   return (
     <NavbarWrapper>
@@ -31,7 +38,14 @@ const Navbar = () => {
           {/* Big Screen Nav */}
           <SearchBar />
 
-          <ToggleThemeButton>Dark Mode</ToggleThemeButton>
+          {
+             history.action !== 'POP' && (
+               <BackButton onClick={goToPrevPage}>
+                 <FaArrowLeft />
+                 <span>Go Back</span>
+               </BackButton>
+             )
+          }
         </Nav>
       </Container>
     </NavbarWrapper>
