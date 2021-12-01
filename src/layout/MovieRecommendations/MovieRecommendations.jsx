@@ -1,15 +1,19 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import MovieList from '../MovieList/MovieList';
-import { RecommendationWrapper, RecommendationTitle } from './MovieRecommendations.style';
+import { RecommendationWrapper } from './MovieRecommendations.style';
 import 'twin.macro';
+import { Container } from '../../shared/Flexi';
+import { MovieListTitle } from '../../shared/MovieListTitle';
 
 const Child = ({ list }) => {
   return (
     <>
-      <RecommendationTitle>
-        Recommendation
-      </RecommendationTitle>
+      <MovieListTitle>
+        <Container>
+          Recommendation
+        </Container>
+      </MovieListTitle>
       {
         list
           && <MovieList movies={list} />

@@ -11,10 +11,3 @@ export const RecommendationWrapper = styled.div`
   background: rgba(21, 31, 48, 0.7);
   border: 1px solid rgba(21, 31, 48, 0.31);
 `;
-
-export const RecommendationTitle = styled.h2`
-  ${tw`
-    text-white
-    text-2xl
-  `}
-`;

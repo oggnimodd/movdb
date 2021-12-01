@@ -1,19 +1,27 @@
 import React from 'react';
 import MovieList from '../MovieList/MovieList';
-import { CreditsTitle } from './MovieCredits.style';
+import { CreditsHeader, Count } from './MovieCredits.style';
 import { Container } from '../../shared/Flexi';
+import { MovieListTitle } from '../../shared/MovieListTitle';
 
 const MovieCredits = ({ credits }) => {
-  if(!credits || credits.length === 0) {
+  const total = credits.length;
+  if(!credits || total === 0) {
     return null;
   }
 
   return (
     <>
       <Container>
-        <CreditsTitle>
-          Movie Credits
-        </CreditsTitle>
+        <CreditsHeader>
+          <MovieListTitle>
+            Movie Credits
+          </MovieListTitle>
+          <Count>
+            {total} movie{total > 1 ? 's' : null}
+          </Count>
+        </CreditsHeader>
+
       </Container>
       <MovieList movies={credits} />
     </>
