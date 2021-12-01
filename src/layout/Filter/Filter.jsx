@@ -1,7 +1,11 @@
 import React from 'react';
 import Select from 'react-select';
-import { SelectStyle } from './Filter.style';
+import {
+  SelectStyle, FilterLabel, FilterTop, ResetButton,
+} from './Filter.style';
 import { Container } from '../../shared/Flexi';
+
+const defaultFilter = 'popularity.desc';
 
 const options = [
   {
@@ -47,9 +51,23 @@ const Filter = ({ filter, changeFilter }) => {
     changeFilter(e.value);
   };
 
+  const resetFilter = (e) => {
+    changeFilter(defaultFilter);
+  };
+
   return (
     <Container>
-      <p>Filter</p>
+      <FilterTop>
+        <FilterLabel>Sort By</FilterLabel>
+        {
+          filter !== defaultFilter
+          && (
+            <ResetButton onClick={resetFilter}>
+              Reset
+            </ResetButton>
+          )
+        }
+      </FilterTop>
       <SelectStyle>
         <Select
           onChange={handleChange}

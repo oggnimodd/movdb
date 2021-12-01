@@ -4,8 +4,15 @@ export const SelectStyle = styled.div`
   position: relative;
   z-index: 6000;
 
+  ${tw`
+    
+  `}
+
   .react-select-container{
-    max-width: 300px;
+    ${tw`
+      w-full 
+      md:max-w-xs
+    `}
   }
 
   .react-select__control{
@@ -64,4 +71,30 @@ export const SelectStyle = styled.div`
     font-weight: bold;
     padding-left: 30px;
   }
+`;
+
+export const FilterTop = styled.div`
+  ${tw`
+    flex 
+    mt-10
+    mb-2  
+    justify-between
+    items-center
+    w-full 
+    md:max-w-xs
+  `}
+`;
+
+export const FilterLabel = styled.p`
+  ${tw`
+    font-primary 
+  `}
+`;
+
+export const ResetButton = styled.button`
+  ${tw`
+    font-primary 
+    text-white 
+    text-accent
+  `}
 `;
