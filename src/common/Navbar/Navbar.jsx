@@ -17,7 +17,7 @@ const Navbar = () => {
   const history = useHistory();
 
   const goToPrevPage = () => {
-    if (history.action !== 'POP') history.goBack();
+    history.goBack();
   };
 
   return (
@@ -38,14 +38,11 @@ const Navbar = () => {
           {/* Big Screen Nav */}
           <SearchBar />
 
-          {
-             history.action !== 'POP' && (
-               <BackButton onClick={goToPrevPage}>
-                 <FaArrowLeft />
-                 <span>Go Back</span>
-               </BackButton>
-             )
-          }
+          <BackButton onClick={goToPrevPage}>
+            <FaArrowLeft />
+            <span>Go Back</span>
+          </BackButton>
+
         </Nav>
       </Container>
     </NavbarWrapper>
