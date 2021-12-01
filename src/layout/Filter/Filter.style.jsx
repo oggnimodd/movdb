@@ -5,7 +5,7 @@ export const SelectStyle = styled.div`
   z-index: 6000;
 
   ${tw`
-    
+    mb-10 
   `}
 
   .react-select-container{
@@ -76,8 +76,7 @@ export const SelectStyle = styled.div`
 export const FilterTop = styled.div`
   ${tw`
     flex 
-    mt-10
-    mb-2  
+    mb-1  
     justify-between
     items-center
     w-full 

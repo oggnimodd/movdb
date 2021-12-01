@@ -4,11 +4,14 @@ import MovieList from '../layout/MovieList/MovieList';
 import useMovies from '../hooks/useMovies';
 import Fallback from '../shared/Fallback';
 import Pagination from '../layout/Pagination/Pagination';
+import Header from '../shared/Header/Header';
 
 const Home = () => {
   // get movie list here and pass to children
   // const {data,loading,error} = useMovie();
-  const { movies, loading, error } = useMovies('discover');
+  const {
+    movies, loading, error, pageTitle, currentPage,
+  } = useMovies('discover');
 
   if(loading) {
     return <Fallback />;
@@ -27,6 +30,12 @@ const Home = () => {
   return (
     <>
       {/* List header (description), ex => Popular Movies -------- page 1 of 500 */}
+
+      <Header
+        title={pageTitle.replace('_', ' ')}
+        total={total_pages}
+        page={currentPage}
+      />
 
       {/* movie list */}
       <MovieList movies={results} />

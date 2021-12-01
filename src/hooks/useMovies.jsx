@@ -18,6 +18,7 @@ const createURL = (type, page, params, search, filter) => {
   };
 
   let url;
+  let pageTitle;
   query.page = page || 1;
 
   if(type === 'discover') {
@@ -25,6 +26,8 @@ const createURL = (type, page, params, search, filter) => {
     discoverID = discoverID === 'top-rated' ? 'top_rated' : discoverID;
 
     url = `${baseURL}movie/${discoverID}?${queryString.stringify(query)}`;
+
+    pageTitle = discoverID;
   }
 
   if(type === 'genre') {
@@ -33,6 +36,8 @@ const createURL = (type, page, params, search, filter) => {
       const genre = genres.filter((i) => i.name.toLowerCase() === genreID)[0].id;
       query.with_genres = genre;
       url = `${baseURL}discover/movie?${queryString.stringify(query)}`;
+
+      pageTitle = genreID;
     }
   }
 
@@ -40,10 +45,12 @@ const createURL = (type, page, params, search, filter) => {
     if(search) {
       query.query = search;
       url = `${baseURL}search/movie?${queryString.stringify(query)}`;
+
+      pageTitle = search;
     }
   }
 
-  return { url };
+  return { url, pageTitle, page: query.page };
 };
 
 const defaultFilter = 'popularity.desc';
@@ -62,7 +69,7 @@ const useMovies = (type) => {
 
   const parsed = queryString.parse(search);
   const { page, query } = parsed;
-  const { url } = createURL(type, page, params, query, filter);
+  const { url, pageTitle, page: currentPage } = createURL(type, page, params, query, filter);
 
   useEffect(() => {
     const getMovies = async () => {
@@ -86,10 +93,8 @@ const useMovies = (type) => {
     getMovies();
   }, [location, filter]);
 
-  console.log(loading);
-
   return {
-    movies, error, loading, filter, changeFilter,
+    movies, error, loading, filter, changeFilter, pageTitle, currentPage,
   };
 };
 
