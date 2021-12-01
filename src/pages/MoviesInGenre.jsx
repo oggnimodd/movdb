@@ -1,10 +1,9 @@
 /* eslint-disable camelcase */
 import React from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
-import queryString from 'query-string';
 import MovieList from '../layout/MovieList/MovieList';
 import useMovies from '../hooks/useMovies';
 import Fallback from '../shared/Fallback';
+import Filter from '../layout/Filter/Filter';
 import { Button } from './Home';
 
 const MoviesInGenre = () => {
@@ -29,6 +28,7 @@ const MoviesInGenre = () => {
       </Button>
 
       {/* filter */}
+      <Filter />
 
       {/* movie list */}
       <MovieList movies={results} />
