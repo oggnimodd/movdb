@@ -89,8 +89,14 @@ const useMovies = (type) => {
         console.log(error);
       }
     };
-    setLoading(true);
-    getMovies();
+
+    if(url) {
+      setLoading(true);
+      getMovies();
+    }else{
+      setError(true);
+      setLoading(false);
+    }
   }, [location, filter]);
 
   return {

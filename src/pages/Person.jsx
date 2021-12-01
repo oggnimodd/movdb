@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import usePerson from '../hooks/usePerson';
 import Fallback from '../shared/Fallback';
 import MovieCredits from '../layout/MovieCredits/MovieCredits';
@@ -13,7 +14,7 @@ const Person = () => {
   }
 
   if(error) {
-    return <p>error</p>;
+    return <Redirect to="/404" />;
   }
 
   if(!details) {

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import useMovieDetails from '../hooks/useMovieDetails';
 
 import Fallback from '../shared/Fallback';
@@ -12,7 +13,7 @@ const Cast = () => {
   }
 
   if(error) {
-    return <p>error</p>;
+    return <Redirect to="/404" />;
   }
 
   if(!details) {

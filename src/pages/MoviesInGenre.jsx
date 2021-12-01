@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import MovieList from '../layout/MovieList/MovieList';
 import useMovies from '../hooks/useMovies';
 import Fallback from '../shared/Fallback';
@@ -17,8 +18,9 @@ const MoviesInGenre = () => {
   }
 
   if(error) {
-    return <p>error</p>;
+    return <Redirect to="/404" />;
   }
+
   if(!movies) return null;
 
   const { results, total_pages } = movies || {};

@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import MovieList from '../layout/MovieList/MovieList';
 import Fallback from '../shared/Fallback';
 import useMovies from '../hooks/useMovies';
@@ -18,14 +19,14 @@ const SearchResults = () => {
   }
 
   if(error) {
-    return <p>error</p>;
+    return <Redirect to="/404" />;
   }
-
-  const { results, total_pages } = movies || {};
 
   if(!movies) {
     return null;
   }
+
+  const { results, total_pages } = movies || {};
 
   return (
     <>
