@@ -84,6 +84,7 @@ const useMovieActions = (details) => {
 
   // get watchlist and favorites state onmount
   useEffect(() => {
+    let isSubscribe = true;
     // Check if shelf exist
     const local = localStorage.getItem('shelf');
     const localObject = JSON.parse(local);
@@ -94,8 +95,12 @@ const useMovieActions = (details) => {
     const isWatchlist = watchlist.find((i) => i.id === details.id);
     const isFavorite = favorites.find((i) => i.id === details.id);
 
-    isWatchlist && setInWatchlist(true);
-    isFavorite && setInFavorite(true);
+    if(isSubscribe) {
+      isWatchlist && setInWatchlist(true);
+      isFavorite && setInFavorite(true);
+    }
+
+    return () => isSubscribe = false;
   }, []);
 
   return {

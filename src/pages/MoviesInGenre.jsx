@@ -7,7 +7,9 @@ import Filter from '../layout/Filter/Filter';
 import { Button } from './Home';
 
 const MoviesInGenre = () => {
-  const { movies, loading, error } = useMovies('genre');
+  const {
+    movies, loading, error, filter, changeFilter,
+  } = useMovies('genre');
 
   if(loading) {
     return <Fallback />;
@@ -28,7 +30,10 @@ const MoviesInGenre = () => {
       </Button>
 
       {/* filter */}
-      <Filter />
+      <Filter
+        filter={filter}
+        changeFilter={changeFilter}
+      />
 
       {/* movie list */}
       <MovieList movies={results} />

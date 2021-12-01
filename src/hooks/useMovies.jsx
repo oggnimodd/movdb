@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable no-return-assign */
+import React, { useState, useEffect, useRef } from 'react';
 import { useLocation, useParams, useHistory } from 'react-router-dom';
 import queryString from 'query-string';
 import { baseURL, apiKey } from '../config/movieAPI';
@@ -9,15 +10,16 @@ const validateGenre = (id) => {
   return inGenres.length;
 };
 
-const createURL = (type, page, params, search) => {
+const createURL = (type, page, params, search, filter) => {
   const query = {
     page: '',
-    sort_by: 'popularity.desc',
+    sort_by: filter,
     api_key: apiKey,
     adult: false,
   };
 
   let url;
+  let memoGenre;
   query.page = page || 1;
 
   if(type === 'discover') {
@@ -33,6 +35,7 @@ const createURL = (type, page, params, search) => {
       const genre = genres.filter((i) => i.name.toLowerCase() === genreID)[0].id;
       query.with_genres = genre;
       url = `${baseURL}discover/movie?${queryString.stringify(query)}`;
+      memoGenre = genre;
     }
   }
 
@@ -43,16 +46,19 @@ const createURL = (type, page, params, search) => {
     }
   }
 
-  return url;
+  return { url, memoGenre };
 };
 
+const defaultFilter = 'popularity.desc';
+
 const useMovies = (type) => {
-  const history = useHistory();
+  const [filter, changeFilter] = useState(defaultFilter);
+  const previousFilter = useRef(null);
 
   // need location to get query and page
-  const l = useLocation();
+  const location = useLocation();
   const params = useParams();
-  const { pathname: location, search } = l;
+  const { search } = location;
 
   const [movies, setMovies] = useState();
   const [error, setError] = useState();
@@ -60,36 +66,57 @@ const useMovies = (type) => {
 
   const parsed = queryString.parse(search);
   const { page, query } = parsed;
-  const url = createURL(type, page, params, query);
+  const { url, memoGenre } = createURL(type, page, params, query, filter);
 
-  if(!url) {
-    history.push('/404');
-  }
+  const getMovies = async () => {
+    try {
+      // call movie api here
+      const res = await fetch(url);
+      const json = await res.json();
+      if(res.ok) {
+        setMovies(json);
+        setError(false);
+      }else{
+        setError(true);
+      }
+      setLoading(false);
+    } catch (error) {
+      setError(error);
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    const getMovies = async () => {
-      try {
-        // call movie api here
-        const res = await fetch(url);
-        const json = await res.json();
-        if(res.ok) {
-          setMovies(json);
-          setError(false);
-        }else{
-          setError(true);
-        }
-        setLoading(false);
-      } catch (error) {
-        setError(error);
-        console.log(error);
+    let isSubscribed = true;
+
+    if(isSubscribed) {
+      changeFilter(defaultFilter);
+    }
+
+    return () => isSubscribed = false;
+  }, [memoGenre]);
+
+  useEffect(() => {
+    let isSubscribed = true;
+    const a = filter === 'popularity.desc' && previousFilter.current === 'popularity.desc';
+
+    if(filter !== previousFilter.current || a) {
+      if(isSubscribed) {
+        previousFilter.current = filter;
+        setLoading(true);
+        getMovies();
       }
+    }else{
+      setLoading(true);
+    }
+
+    return () => {
+      isSubscribed = false;
     };
-    setLoading(true);
-    getMovies();
-  }, [l]);
+  }, [location, filter]);
 
   return {
-    movies, error, loading,
+    movies, error, loading, filter, changeFilter,
   };
 };
 

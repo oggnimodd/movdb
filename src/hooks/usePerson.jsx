@@ -22,28 +22,34 @@ const usePerson = () => {
 
   const url = createURL(personID);
 
-  useEffect(() => {
-    const getMovieDetails = async () => {
-      try {
-        // call movie api here
-        const res = await fetch(url);
-        const json = await res.json();
+  const getMovieDetails = async () => {
+    try {
+      // call movie api here
+      const res = await fetch(url);
+      const json = await res.json();
 
-        if(!res.ok) {
-          setError(true);
-        }else{
-          setDetails(json);
-          setError(false);
-        }
-        setLoading(false);
-      } catch (error) {
-        setError(error);
-        console.log(error);
+      if(!res.ok) {
+        setError(true);
+      }else{
+        setDetails(json);
+        setError(false);
       }
-    };
+      setLoading(false);
+    } catch (error) {
+      setError(error);
+      console.log(error);
+    }
+  };
 
-    setLoading(true);
-    getMovieDetails();
+  useEffect(() => {
+    let isSubscribed = true;
+
+    if(isSubscribed) {
+      setLoading(true);
+      getMovieDetails();
+    }
+
+    return () => isSubscribed = false;
   }, [personID]);
 
   return {

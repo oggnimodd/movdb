@@ -38,11 +38,22 @@ const options = [
   },
 ];
 
-const Filter = () => {
+const Filter = ({ filter, changeFilter }) => {
+  // find index of default value
+  const index = options.map((i) => i.value).indexOf(filter);
+  const defaultValue = options[index];
+
+  const handleChange = (e) => {
+    changeFilter(e.value);
+  };
+
   return (
     <Container>
+      <p>Filter</p>
       <SelectStyle>
         <Select
+          onChange={handleChange}
+          defaultValue={defaultValue}
           className="react-select-container"
           classNamePrefix="react-select"
           options={options}
