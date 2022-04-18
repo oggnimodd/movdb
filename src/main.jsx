@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import GlobalStyles from './styles/GlobalStyles';
-import './styles/scrollbar.css';
 
 // Swiper react styles
 import 'swiper/swiper-bundle.min.css';

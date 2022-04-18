@@ -38,12 +38,16 @@ export const Inner = styled.div`
     pt-2
   `}
 
-  /* Hide default scrollbar and use plugin */
-  scrollbar-width: none; /* Firefox 64 */
-  -ms-overflow-style: none; /* IE 11 */
+  scrollbar-width: thin;
 
-  &::-webkit-scrollbar{
-    /* display: none; // chrome */
+  ::-webkit-scrollbar {
+    width: 0.4rem;
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #0472b3, #09305e, #c5c8e0);
+    border-radius: 3px;
   }
 `;
 
