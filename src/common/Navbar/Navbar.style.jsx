@@ -2,11 +2,13 @@ import tw, { styled } from 'twin.macro';
 
 export const NavbarWrapper = styled.div`
   ${tw`
-    w-full
     bg-secondary 
     fixed
+    w-full
+    sm:w-[calc(100% - 230px)]
   `}
 
+  /* width : calc(100% - 230px); */
   z-index: 7777;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 `;
