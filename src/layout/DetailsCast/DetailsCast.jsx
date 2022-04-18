@@ -15,18 +15,23 @@ const responsiveBreakpoints = {
   // md
   0: {
     slidesPerView: 2,
+    spaceBetween: 20,
   },
   [breakpoints.md]: {
     slidesPerView: 3,
+    spaceBetween: 20,
   },
   [breakpoints.lg]: {
     slidesPerView: 4,
+    spaceBetween: 20,
   },
   [breakpoints.xl]: {
     slidesPerView: 5,
+    spaceBetween: 20,
   },
   [breakpoints.xxl]: {
     slidesPerView: 7,
+    spaceBetween: 20,
   },
 };
 
@@ -55,7 +60,6 @@ const DetailsCast = ({ cast, id }) => {
           shownCast.length > 0 && shownCast.map((i) => {
             return (
               <SwiperSlide key={i.id}>
-
                 <CastCardScroll
                   castInfo={i}
                 />

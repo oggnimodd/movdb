@@ -9,7 +9,6 @@ export const CardWrapper = styled.div`
     border
     border-accent
   `}
-  width: 180px;
 `;
 
 export const CardImage = styled.div`
