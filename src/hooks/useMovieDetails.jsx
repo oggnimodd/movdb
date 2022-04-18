@@ -22,10 +22,10 @@ const useMovieDetails = () => {
 
   const url = createURL(movieID);
 
-  const getMovieDetails = async () => {
+  const getMovieDetails = async (abortController) => {
     try {
       // call movie api here
-      const res = await fetch(url);
+      const res = await fetch(url, { signal: abortController.signal });
       const json = await res.json();
 
       if(!res.ok) {
@@ -36,20 +36,22 @@ const useMovieDetails = () => {
       }
       setLoading(false);
     } catch (error) {
-      setError(error);
-      console.log(error);
+      if(!abortController.signal.aborted) {
+        setError(error);
+        console.log(error);
+      }
     }
   };
 
   useEffect(() => {
-    let isSubscribed = true;
+    const abortController = new AbortController();
 
-    if(isSubscribed) {
-      setLoading(true);
-      getMovieDetails();
-    }
+    setLoading(true);
+    getMovieDetails(abortController);
 
-    return () => isSubscribed = false;
+    return () => {
+      abortController.abort();
+    };
   }, [movieID]);
 
   return {

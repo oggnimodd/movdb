@@ -79,10 +79,10 @@ const useMovies = (type) => {
   const { url, pageTitle, page: currentPage } = createURL(type, page, params, query, filter);
 
   useEffect(() => {
-    const getMovies = async () => {
+    const getMovies = async (abortController) => {
       try {
         // call movie api here
-        const res = await fetch(url);
+        const res = await fetch(url, { signal: abortController.signal });
         const json = await res.json();
         if(res.ok) {
           setMovies(json);
@@ -92,18 +92,26 @@ const useMovies = (type) => {
         }
         setLoading(false);
       } catch (error) {
-        setError(error);
-        console.log(error);
+        if(!abortController.signal.aborted) {
+          setError(error);
+          console.log(error);
+        }
       }
     };
 
+    const abortController = new AbortController();
+
     if(url) {
       setLoading(true);
-      getMovies();
+      getMovies(abortController);
     }else{
       setError(true);
       setLoading(false);
     }
+
+    return () => {
+      abortController.abort();
+    };
   }, [location, filter]);
 
   return {
