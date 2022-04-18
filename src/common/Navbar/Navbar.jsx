@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
-import { BiSearch } from 'react-icons/bi';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { useHistory } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 import { Container } from '../../shared/Flexi';
 import {
-  NavbarWrapper, Nav, NavBrand, MenuIcon, BackButton,
+  NavbarWrapper, Nav, NavBrand, MenuIcon, BackButton, Space,
 } from './Navbar.style';
 import Brand from '../../shared/Brand/Brand';
 import Link from '../../shared/Link';
@@ -21,31 +20,34 @@ const Navbar = () => {
   };
 
   return (
-    <NavbarWrapper>
-      <Container>
-        <Nav>
+    <>
+      <NavbarWrapper>
+        <Container>
+          <Nav>
 
-          {/* Mobile size Nav */}
-          <NavBrand>
-            <Link to="/">
-              <Brand />
-            </Link>
-          </NavBrand>
-          <MenuIcon onClick={toggle}>
-            <AiOutlineMenu />
-          </MenuIcon>
+            {/* Mobile size Nav */}
+            <NavBrand>
+              <Link to="/">
+                <Brand />
+              </Link>
+            </NavBrand>
+            <MenuIcon onClick={toggle}>
+              <AiOutlineMenu />
+            </MenuIcon>
 
-          {/* Big Screen Nav */}
-          <SearchBar />
+            {/* Big Screen Nav */}
+            <SearchBar />
 
-          <BackButton onClick={goToPrevPage}>
-            <FaArrowLeft />
-            <span>Go Back</span>
-          </BackButton>
+            <BackButton onClick={goToPrevPage}>
+              <FaArrowLeft />
+              <span>Go Back</span>
+            </BackButton>
 
-        </Nav>
-      </Container>
-    </NavbarWrapper>
+          </Nav>
+        </Container>
+      </NavbarWrapper>
+      <Space />
+    </>
   );
 };
 

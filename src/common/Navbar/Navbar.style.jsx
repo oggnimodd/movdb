@@ -1,10 +1,17 @@
 import tw, { styled } from 'twin.macro';
 
+export const Space = styled.div`
+  ${tw`
+    mt-[4.75rem]
+  `}
+`;
+
 export const NavbarWrapper = styled.div`
   ${tw`
     bg-secondary 
     fixed
-    w-full
+    w-full 
+    h-[4.75rem]
     sm:w-[calc(100% - 230px)]
   `}
 

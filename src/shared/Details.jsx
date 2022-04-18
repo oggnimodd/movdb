@@ -4,7 +4,8 @@ import { breakpoints }from '../constants/breakpoints';
 
 export const DetailsWrapper = styled.div`
   ${tw`
-    relative
+    relative 
+    mt-[4.75rem]
   `}
 `;
 
