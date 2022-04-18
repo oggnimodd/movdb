@@ -1,15 +1,15 @@
-// vite.config.json
 import { defineConfig } from 'vite';
-import reactRefresh from '@vitejs/plugin-react-refresh';
-import macrosPlugin from 'vite-plugin-babel-macros';
-
-const reactSvgPlugin = require('vite-plugin-react-svg');
+import react from '@vitejs/plugin-react';
+import reactSvgPlugin from 'vite-plugin-react-svg';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [reactRefresh(), macrosPlugin(), reactSvgPlugin()],
-  define: {
-    'process.platform': JSON.stringify('win32'),
-    'process.env': {},
-  },
+  plugins: [
+    react({
+      babel: {
+        plugins: ['babel-plugin-macros', 'babel-plugin-styled-components'],
+      },
+    }),
+    reactSvgPlugin(),
+  ],
 });
