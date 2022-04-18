@@ -18,7 +18,6 @@ import {
   Backdrop,
   GradientTransition,
   Content,
-  StyledContainer,
 } from '../../shared/Details';
 import {
   RenderGenres,
@@ -78,9 +77,9 @@ const MovieDetails = ({ details, children }) => {
           effect="opacity"
         />
       </Backdrop>
-      <StyledContainer>
+      <Container>
         <Content>
-          <div tw="flex lg:flex-row-reverse flex-row flex-wrap">
+          <div tw="flex flex-grow-0 lg:flex-row-reverse flex-row flex-wrap">
             {/* Image */}
             <div tw="w-full lg:w-4/12">
               <ImageWrapper>
@@ -158,7 +157,7 @@ const MovieDetails = ({ details, children }) => {
           />
         </Content>
         {children}
-      </StyledContainer>
+      </Container>
     </DetailsWrapper>
   );
 };

@@ -3,7 +3,6 @@ import { MdOutlineMovieFilter } from 'react-icons/md';
 import { AiOutlineStar, AiOutlineHeart } from 'react-icons/ai';
 import { FiBarChart2 } from 'react-icons/fi';
 import { BsCalendar3, BsBookmark } from 'react-icons/bs';
-import { Scrollbars } from 'react-custom-scrollbars-2';
 import Link from '../../shared/Link';
 import {
   SideNavbarWrapper, Inner, SubSection, SubSectionHeader, NavLink,
@@ -49,48 +48,41 @@ const SideNavbar = () => {
 
         {/* Scrollable section */}
         <Inner>
-          <Scrollbars
-            renderThumbVertical={(props) => (
-              <div
-                {...props}
-                className="custom-scrollbar-vertical"
-              />
-            )}
-          >
-            <SubSection mobileOnly>
-              <SubSectionHeader>
-                EXPLORE
-              </SubSectionHeader>
-              <SearchBar sideNavbar />
-            </SubSection>
 
-            <SubSection>
-              <SubSectionHeader>
-                DISCOVER
-              </SubSectionHeader>
-              <NavLink to="/discover/popular"><AiOutlineStar />Popular</NavLink>
-              <NavLink to="/discover/top-rated"><FiBarChart2 />Top Rated</NavLink>
-              <NavLink to="/discover/upcoming"><BsCalendar3 />Upcoming</NavLink>
-            </SubSection>
+          <SubSection mobileOnly>
+            <SubSectionHeader>
+              EXPLORE
+            </SubSectionHeader>
+            <SearchBar sideNavbar />
+          </SubSection>
 
-            <SubSection>
-              <SubSectionHeader>
-                SHELF
-              </SubSectionHeader>
-              <NavLink to="/favorites">
-                <AiOutlineHeart />
-                Favorites
-              </NavLink>
-              <NavLink to="/watch-list">
-                <BsBookmark />Watchlist
-              </NavLink>
-            </SubSection>
+          <SubSection>
+            <SubSectionHeader>
+              DISCOVER
+            </SubSectionHeader>
+            <NavLink to="/discover/popular"><AiOutlineStar />Popular</NavLink>
+            <NavLink to="/discover/top-rated"><FiBarChart2 />Top Rated</NavLink>
+            <NavLink to="/discover/upcoming"><BsCalendar3 />Upcoming</NavLink>
+          </SubSection>
 
-            <SubSection>
-              <SubSectionHeader>
-                GENRES
-              </SubSectionHeader>
-              {
+          <SubSection>
+            <SubSectionHeader>
+              SHELF
+            </SubSectionHeader>
+            <NavLink to="/favorites">
+              <AiOutlineHeart />
+              Favorites
+            </NavLink>
+            <NavLink to="/watch-list">
+              <BsBookmark />Watchlist
+            </NavLink>
+          </SubSection>
+
+          <SubSection>
+            <SubSectionHeader>
+              GENRES
+            </SubSectionHeader>
+            {
               categories && categories.map((item) => {
                 return (
                   <NavLink
@@ -103,8 +95,7 @@ const SideNavbar = () => {
                 );
               })
             }
-            </SubSection>
-          </Scrollbars>
+          </SubSection>
         </Inner>
 
       </SideNavbarWrapper>

@@ -6,7 +6,7 @@ export const HeaderWrapper = styled.div`
     justify-between 
     text-white 
     my-10 
-    items-center
+    items-center 
   `}
 `;
 

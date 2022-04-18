@@ -4,8 +4,15 @@ export const CastWrapper = styled.div`
   ${tw`
     mt-6 
     sm:px-[15px]
-    select-none
-  `}
+    select-none 
+    w-full 
+    flex  
+    flex-col
+    flex-1 
+    overflow-x-hidden 
+  `} 
+
+  flex-basis: 0;
 `;
 
 export const CastWrapperHeader = styled.p`
@@ -16,49 +23,6 @@ export const CastWrapperHeader = styled.p`
     text-3xl 
     font-semibold
   `}
-`;
-
-export const ScrollableWrapper = styled.div`
-  width: 100%;
-`;
-
-export const StyledView = styled.div`
-  ${tw`
-    w-full
-    overflow-x-scroll 
-    overflow-y-hidden
-    flex 
-    pb-8 
-    gap-6
-  `}
-
-  /* Hide default scrollbar and use plugin */
-  scrollbar-width: none; /* Firefox 64 */
-  -ms-overflow-style: none; /* IE 11 */
-
-  ::-webkit-scrollbar{
-    display: none;
-  }
-`;
-
-export const ViewMore = styled.div`
-  ${tw`
-    flex 
-    items-center 
-    justify-center 
-    h-full 
-    font-primary 
-    font-bold 
-  `}
-  width: 180px;
-
-  svg {
-    ${tw`
-      inline-block
-      ml-2
-      text-sm
-    `}
-  }
 `;
 
 export const CastWrapperFooter = styled.div`

@@ -16,6 +16,7 @@ import {
   SubHeader,
 } from './AllCast.style';
 import CastCard from '../CastCard/CastCard';
+import { Container } from '../../shared/Flexi';
 
 import 'react-lazy-load-image-component/src/effects/opacity.css';
 
@@ -133,7 +134,7 @@ const AllCast = ({ details }) => {
           effect="opacity"
         />
       </Backdrop>
-      <StyledContainer>
+      <Container>
         <Content>
           {/* Insert Section Header here */}
 
@@ -174,7 +175,7 @@ const AllCast = ({ details }) => {
             </CreditsColumn>
           </div>
         </Content>
-      </StyledContainer>
+      </Container>
     </DetailsWrapper>
   );
 };

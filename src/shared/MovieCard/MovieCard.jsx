@@ -15,7 +15,7 @@ import CardActions from '../CardActions/CardActions';
 import 'react-lazy-load-image-component/src/effects/opacity.css';
 
 const baseURL = 'https://image.tmdb.org/t/p/w200/';
-const placeholderImage = new URL('../../assets/failed_image.png', import.meta.url).href;
+const placeholderImage = '/failed_image.png';
 
 const MovieCard = ({ movieDetails }) => {
   const {

@@ -24,7 +24,7 @@ const genderCode = {
 };
 
 const profileBaseURL = 'https://image.tmdb.org/t/p/w500//';
-const placeholderImage = new URL('../../assets/avatar-placeholder.png', import.meta.url).href;
+const placeholderImage = '/avatar-placeholder.png';
 
 const PersonDetails = ({ details }) => {
   const {

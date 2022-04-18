@@ -11,7 +11,7 @@ import {
 import 'react-lazy-load-image-component/src/effects/opacity.css';
 
 const imageURL = 'https://www.themoviedb.org/t/p//w300_and_h450_face';
-const placeholderImage = new URL('../../assets/avatar-placeholder.png', import.meta.url).href;
+const placeholderImage = '/avatar-placeholder.png';
 
 const CastCardScroll = ({ castInfo }) => {
   const {

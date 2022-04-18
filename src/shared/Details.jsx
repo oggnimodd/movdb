@@ -39,6 +39,8 @@ export const Backdrop = styled.div`
     w-full
     fixed
     overflow-hidden
+    -mt-20
+    md:-mt-32
   `}
 
   min-height: 48vh;
@@ -72,8 +74,8 @@ export const Content = styled.div`
     mt-20
     md:mt-32
     px-[15px]
-    py-20
-    relative
+    py-20 
+    w-full
   `}
 
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
