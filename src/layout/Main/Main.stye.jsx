@@ -9,7 +9,7 @@ export const MainWrapper = styled.div`
     flex 
     flex-col 
     flex-1
-    overflow-hidden
+    overflow-auto
   `} 
 
   flex-basis:0;

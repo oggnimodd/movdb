@@ -4,10 +4,7 @@ export const NavbarWrapper = styled.div`
   ${tw`
     w-full
     bg-secondary 
-    absolute 
-    top-0 
-    left-0
-    sticky
+    fixed
   `}
 
   z-index: 7777;
