@@ -84,6 +84,10 @@ export const Title = styled.h2`
     inline-block
     hover:text-accent
   `}
+
+  &:hover ${UnderlineAnimation}{
+    background-size: ${(props) => `100% ${props.size ? props.size : 3}px`};
+  }
 `;
 
 export const Year = styled.p`
