@@ -36,7 +36,7 @@ export const CardImage = styled.div`
   }
 `;
 
-const placeholderImage = new URL('../../assets/placeholder.svg', import.meta.url).href;
+const placeholderImage = '/placeholder.svg';
 
 export const NoImage = styled.div`
   ${tw`

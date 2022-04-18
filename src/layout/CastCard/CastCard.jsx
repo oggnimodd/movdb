@@ -9,7 +9,7 @@ import {
   Role,
 } from './CastCard.style';
 
-const placeholderImage = new URL('../../assets/avatar-placeholder.png', import.meta.url).href;
+const placeholderImage = '/avatar-placeholder.png';
 
 const CastCard = ({ info }) => {
   const h = 100;
