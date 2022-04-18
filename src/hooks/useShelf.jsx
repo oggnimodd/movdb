@@ -1,14 +1,25 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, {
+  createContext, useState, useLayoutEffect,
+} from 'react';
 
 export const ListContext = createContext();
 
+const DEFAULT_SHELF = {
+  favorites: [],
+  watchlist: [],
+};
+
 const ListProvider = ({ children }) => {
-  const local = localStorage.getItem('shelf');
-  const storageValue = JSON.parse(local);
   const [list, setList] = useState();
 
-  useEffect(() => {
-    setList(storageValue);
+  useLayoutEffect(() => {
+    const local = localStorage.getItem('shelf');
+    if(!local) {
+      localStorage.setItem('shelf', JSON.stringify(DEFAULT_SHELF));
+      setList(DEFAULT_SHELF);
+    }else{
+      setList(JSON.parse(local));
+    }
   }, []);
 
   const addToUI = (item, type) => {

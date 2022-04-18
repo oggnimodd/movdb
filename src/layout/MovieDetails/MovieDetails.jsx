@@ -103,7 +103,6 @@ const MovieDetails = ({ details, children }) => {
                 <MovieActions
                   details={details}
                   video={video}
-                  details={details}
                   openTrailer={openTrailer}
                 />
 
