@@ -14,19 +14,23 @@ import { breakpoints } from '../../constants/breakpoints';
 const responsiveBreakpoints = {
   // md
   0: {
-    slidesPerView: 1,
-  },
-  [breakpoints.md]: {
     slidesPerView: 2,
   },
-  // lg
+  [breakpoints.md]: {
+    slidesPerView: 3,
+  },
   [breakpoints.lg]: {
+    slidesPerView: 4,
+  },
+  [breakpoints.xl]: {
     slidesPerView: 5,
+  },
+  [breakpoints.xxl]: {
+    slidesPerView: 7,
   },
 };
 
 const swiperSettings = {
-  spaceBetween: 3,
   loop: true,
   breakpoints: responsiveBreakpoints,
 };
