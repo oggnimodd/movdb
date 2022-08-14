@@ -36,7 +36,6 @@ const responsiveBreakpoints = {
 };
 
 const swiperSettings = {
-  loop: true,
   breakpoints: responsiveBreakpoints,
 };
 
@@ -44,7 +43,7 @@ const DetailsCast = ({ cast, id }) => {
   // Slice and filter cast ("Acting" and Max 10 length)
   const shownCast = cast.slice(0, 10);
 
-  if(shownCast.length === 0) {
+  if (shownCast.length === 0) {
     return null;
   }
 
@@ -57,16 +56,16 @@ const DetailsCast = ({ cast, id }) => {
           {...swiperSettings}
         >
           {
-          shownCast.length > 0 && shownCast.map((i) => {
-            return (
-              <SwiperSlide key={i.id}>
-                <CastCardScroll
-                  castInfo={i}
-                />
-              </SwiperSlide>
-            );
-          })
-        }
+            shownCast.length > 0 && shownCast.map((i) => {
+              return (
+                <SwiperSlide key={i.id}>
+                  <CastCardScroll
+                    castInfo={i}
+                  />
+                </SwiperSlide>
+              );
+            })
+          }
         </Swiper>
       </div>
 
